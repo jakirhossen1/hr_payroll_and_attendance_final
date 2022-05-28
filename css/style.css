@@ -1,0 +1,119 @@
+/*start Common Css*/
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    outline: 0;
+
+}
+
+body {
+    background-color: #535c68;
+}
+
+html {}
+.form_margin h3{
+    color:#337ab7; 
+}
+
+.line-margin {
+    margin-top: 10px;
+}
+
+span {
+    color: red;
+    font-size: 18px;
+}
+
+#FnId,
+#LnId,
+#presentId,
+#DobId,
+#parmanetId,
+#PhoneId,
+#klassId,
+#GenderId,
+#MMId,
+#FFnId {
+    color: red;
+}
+
+
+/*End Common Css*/
+
+/*Start header css*/
+
+.headers {
+    margin-top: -20px;
+    width: 100%;
+    height: 78px;
+    background-color: #337ab7;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+}
+
+.headers h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 22px;
+    text-justify: none;
+    letter-spacing: 8px;
+    line-height: inherit;
+    justify-content: center;
+}
+
+.headers p {
+    text-align: center;
+    color: red;
+    font-size: 16px;
+    letter-spacing: inherit;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 150px;
+    height: auto;
+    justify-content: center;
+    margin: -12px auto;
+
+}
+
+
+/*End header css*/
+
+
+/*Start Form Css*/
+
+.form_margin {
+    margin: 10px;
+}
+
+
+
+/*End Form Css*/
+
+.profile-pic{
+    width: 150px;
+    height: 150px;
+    margin-left: 380px;
+    margin-top: -40px;
+}
+.profile-pic p{
+    text-align: center;
+    
+}
+.profile-pic img{
+    margin-top: -40px;
+}
+
+.info{
+    text-align: center;
+    margin-top: -20px;
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-decoration-color: #337ab7;
+}
+.info_p{
+    font-size: 18px;
+    margin-top: -20px;
+}
+
