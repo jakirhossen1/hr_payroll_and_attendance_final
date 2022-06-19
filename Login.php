@@ -163,14 +163,27 @@ margin-left: 4px;
            echo "<script>alert(' Enter Email and Password')</script>";
         }else{
         
-        $sql="Select * from user_table where email='$emails' && password='$pass'";
+        $sql="Select * from user_table where email='$emails' && password='$pass' limit 1";
         $query=mysqli_query($conn,$sql);
         $user = mysqli_fetch_array($query);
+
         $num=mysqli_num_rows($query);
         if($num==1){
         	
-            $_SESSION['userName']=$emails;
-            $_SESSION['role_id']= $user['role_id'];
+        	$sql2 = "Select * from user_role where role_id ='".$user['role_id']."' and user_role_status = 'Active' limit 1";
+        	$query2 = mysqli_query($conn,$sql2);
+        	$user2 = mysqli_fetch_array($query2);
+
+        	$role['role_id'] =  $user2['user2'];
+        	$role['role_name'] =  $user2['role_name'];
+        	$role['permission'] =  $user2['permission'];
+        	$role['user_role_status'] =  $user2['user_role_status'];
+
+            $_SESSION['userName'] = $emails;
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['role_id'] = $user['role_id'];
+            $_SESSION['role'] = $role;
+            $_SESSION['user'] = $user;
             $_SESSION['full_name']= $user['full_name'];
 
 

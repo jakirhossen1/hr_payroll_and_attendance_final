@@ -12,6 +12,7 @@
             </div>
             <div class="search-toggle-icon d-xl-none ms-auto">
               <i class="bi bi-search"></i>
+            
             </div>
             <form class="searchbar d-none d-xl-flex ms-auto">
                 <div class="position-absolute top-50 translate-middle-y search-icon ms-3"><i class="bi bi-search"></i></div>
@@ -20,6 +21,34 @@
             </form>
             <div class="top-navbar-right ms-3">
               <ul class="navbar-nav align-items-center">
+              <li class="nav-item">
+                <form method="post" enctype="multipart/form-data">
+                  <?php
+                    include "connect.php";
+
+                    $nam = $_SESSION['user_id'];
+                    $today = date("Y-m-d");
+
+                    $user= $_SESSION['userName'];
+                    $sql = "SELECT * FROM attendance Where employee_id = '$nam' and attendancedate = '$today'";
+                    $query=mysqli_query($conn,$sql);
+
+
+                    $row=mysqli_fetch_array($query);
+
+                    $sql2 = "SELECT * FROM attendance Where employee_id = '$nam' and singInTime IS NOT NULL and  singOutTime IS NOT NULL ";
+                    $query2=mysqli_query($conn,$sql2);
+                    $row2 = mysqli_fetch_array($query2);
+                    if($row):
+                      if(! $row2):
+                  ?>
+                    <button type="submit" class="btn btn-primary" name="clockind_submit">Clock Out</button></li>
+                  <?php endif ?>
+                <?php else:?>
+                  <button type="submit" class="btn btn-primary" name="clockind_submit">Clock In</button></li>
+                <?php endif ?>
+
+                </form>
               <li class="nav-item dropdown dropdown-large">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                   <div class="user-setting d-flex align-items-center gap-1">
@@ -89,5 +118,30 @@
               </ul>
               </div>
     </nav>
+
+
+    <?php 
+      if(isset($_POST['clockind_submit'])){
+           $nam = $_SESSION['user_id'];
+           $today = date("Y-m-d");
+           $In= date("Y-m-d H:i:s");
+           $Out= date("Y-m-d H:i:s");
+
+          $t="SELECT * FROM attendance Where employee_id = '$nam' && attendancedate = '$today'";
+          $result = mysqli_query($conn, $t);
+          $num = mysqli_num_rows($result);
+          if($num==1){
+              $sql="UPDATE  `attendance` SET `employee_id` = '$nam',`singOutTime` = '$Out' Where employee_id='$nam' && attendancedate='$today'";
+              $q=mysqli_query($conn,$sql);
+              header("Location:dailyAttendance.php");
+          }else{
+              $sql="INSERT INTO `attendance` (`employee_id`, `singInTime`, `lateCountTime`, `attendaneStatus`, `attendancedate`) VALUES ('$nam', '$In' , null ,null, '$today')";
+              $q=mysqli_query($conn,$sql);
+              
+              header("location:dailyAttendance.php");
+          }
+      }
+    
+    ?>
 
     

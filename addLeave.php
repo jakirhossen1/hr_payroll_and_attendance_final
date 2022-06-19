@@ -5,6 +5,9 @@ if(!isset($_SESSION['userName'])){
   header("location:Login.php");  
 }
 
+
+  // print_r("<pre>");
+  // print_r($_SESSION);die();
 ?>
 
 
@@ -118,11 +121,34 @@ if(!isset($_SESSION['userName'])){
             <div class="row">
               <div class="col-md-3"></div>
               <div class="col-md-6">
-                <div class="form-group">
-                  <input type="" name="select_employee" class="form-control mt-3 mb-3" value="<?php echo $_SESSION['full_name']?>" readonly>
+                <?php if($_SESSION['role']['role_name'] == "Admin"): ?>
+                  <div class="form-group">
+                    <label>Users</label>
+                    <?php
+                      $sql = "SELECT * FROM user_table WHERE `email` != '".$_SESSION['userName']."'";
+                      $query = mysqli_query($conn, $sql);
+                      $rowcount = mysqli_num_rows($query);
+                    ?>
+                    <select class="form-select" name="select_employee" id="select_employee" onkeyup="change(this.id,'errleave_type')" onblur="change(this.id,'errleave_type')" >
+                         
 
-                </div>
+                      <option value="">Select user</option>
+
+                      <?php
+                      for ($i = 1; $i <= $rowcount; $i++) {
+                        $row = mysqli_fetch_array($query);
+                      ?>
+                        <option value="<?php echo $row['user_name']; ?>"><?php echo $row['user_name'] ." (". $row['email'] .")"; ?></option>
+                      <?php
+                      }
+
+                      ?>
+                    </select>
+                  </div>
+                <?php endif ?>
+
                 <div class="form-group">
+                  <label>Leave Type</label>
                   <?php
 
                   $sql = "SELECT leave_type FROM leave_type";
@@ -183,6 +209,14 @@ if(!isset($_SESSION['userName'])){
                     }
 
                     ?>
+                  </select>
+                    <span id="errsupport_document"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="label">Status</label>
+                  <select class="form-select" >
+                    <option value="">Pending</option>
                   </select>
                     <span id="errsupport_document"></span>
                 </div>

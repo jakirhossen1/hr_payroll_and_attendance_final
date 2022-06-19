@@ -64,6 +64,7 @@ if(!isset($_SESSION['userName'])){
         <main class="page-content">
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
+                <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -85,6 +86,9 @@ if(!isset($_SESSION['userName'])){
                         </div>
                     </div>
                 </div>
+            <?php endif ?>
+
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -108,6 +112,8 @@ if(!isset($_SESSION['userName'])){
                         </div>
                     </div>
                 </div>
+            <?php endif ?>
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -131,6 +137,8 @@ if(!isset($_SESSION['userName'])){
                         </div>
                     </div>
                 </div>
+            <?php endif ?>
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -153,7 +161,8 @@ if(!isset($_SESSION['userName'])){
                         </div>
                     </div>
                 </div>
-                
+            <?php endif ?>
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -176,7 +185,8 @@ if(!isset($_SESSION['userName'])){
                         </div>
                     </div>
                 </div>
-                
+            <?php endif ?>
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -199,8 +209,8 @@ if(!isset($_SESSION['userName'])){
                         </div>
                     </div>
                 </div>
-                
-                
+            <?php endif ?>
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                  <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -209,8 +219,8 @@ if(!isset($_SESSION['userName'])){
                                     <?php 
                               $month=date("F");
                               $sqls="SELECT MONTHNAME(`salary_date`)as mnname,
-SUM(`gross_salary`) as amts FROM salary GROUP BY Month(`salary_date`)
-HAVING mnname='$month'";
+                                    SUM(`gross_salary`) as amts FROM salary GROUP BY Month(`salary_date`)
+                                HAVING mnname='$month'";
                               $querys=mysqli_query($conn,$sqls);
                             $nums=mysqli_fetch_array($querys);
                               
@@ -225,6 +235,8 @@ HAVING mnname='$month'";
                         </div>
                     </div>
                 </div>
+            <?php endif ?>
+            <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
                  <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
@@ -233,8 +245,8 @@ HAVING mnname='$month'";
                                     <?php 
                               $month= date("F");
                               $sqls="SELECT MONTHNAME(`expense_date`)as mname,
-SUM(amount) as amt FROM expense_list GROUP BY Month(`expense_date`)
-HAVING mname='$month'";
+                                SUM(amount) as amt FROM expense_list GROUP BY Month(`expense_date`)
+                        HAVING mname='$month'";
                               $querys=mysqli_query($conn,$sqls);
                             $nums=mysqli_fetch_array($querys);
                               
@@ -249,6 +261,7 @@ HAVING mname='$month'";
                         </div>
                     </div>
                 </div>
+            <?php endif ?>
             </div>
             <!--end row-->
 

@@ -175,11 +175,25 @@
                 </div>
                   
                 <div class="form-group">
-                  <select class="form-select mt-3" name="leave_status" value="">
-                    <option value="<?php echo $num['leave_status'];?>"><?php echo $num['leave_status'];?></option>
-                    <option value="pending">Pending</option>
-                    <option value="aproved">Aproved</option>
+
+                  <?php 
+                  if($num['leave_status'] == "pending"):
+                  ?>
+                  <select class="form-select mt-3" name="leave_status" >
+                    <option value="pending" <?php echo ($num['leave_status'] == "pending" ? "selected" : "");?>>Pending</option>
+
+                     <?php 
+                     if($_SESSION['role']['role_name'] == "Admin"): 
+                      ?>
+                    <option value="aproved" <?php echo ($num['leave_status'] == "aproved" ? "selected" : "") ;?>>Aproved</option>
+                    <option value="declined" <?php echo ($num['leave_status'] == "declined" ? "selected" : "");?>>Declined</option>
+                    <?php endif ?>
                   </select>
+                  <?php else: ?>
+                    <select class="form-select mt-3" name="leave_status" >
+                      <option ><?php echo ucfirst($num['leave_status'])?></option>
+                    </select>
+                  <?php endif?>
                 </div>
                 <div class="form-group">
                   <input class="btn btn-primary bx-pull-right mt-3" type="submit" name="update" value="Update">
