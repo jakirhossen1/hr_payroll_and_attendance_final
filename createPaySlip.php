@@ -465,10 +465,10 @@ for ($i = 1; $i <= $day_count; $i++) {
                                     <br>
                                     <select class="form-select" name="salarystatus" id="salarystatus" onkeyup="change(this.id,'errsalarystatus','status')" onblur="change(this.id,'errsalarystatus','status')" >
                                         <option class="form-control" value="" selected>Select Status</option>
-                                        <option class="form-control" value="Paid">Paid</option>
-                                        <option class="form-control" value="Unpaid">Unpaid</option>
+                                        <!-- <option class="form-control" value="Paid">Paid</option>
+                                        <option class="form-control" value="Unpaid">Unpaid</option> -->
                                         <option class="form-control" value="Pending">Pending</option>
-                                        <option class="form-control" value="Processing">Processing</option>
+                                        <!-- <option class="form-control" value="Processing">Processing</option> -->
                                     </select>
                                     <span id="errsalarystatus"></span>
                                     <br>
@@ -592,7 +592,7 @@ for ($i = 1; $i <= $day_count; $i++) {
                 @$Month=$_POST['dob-month'];
                 $sqls="SELECT * FROM salary_setup Where employe_Name='$empName'";
                 $today=date("Y-m-d");
-                $salaryStatus=$_POST['salarystatus'];
+                $salaryStatus="Pending";
                 
     $q=mysqli_query($conn,$sqls);
     $r=mysqli_fetch_array($q);
