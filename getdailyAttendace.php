@@ -12,7 +12,7 @@
     
               <input class="form-control" type="hidden" name="n" id="" value="<?php echo $c['employee_name'];?>">
               <td>
-                  <input class="form-control" type="text" name="n" id="" value="<?php echo $c['employee_name'];?>" disabled>
+                  <input class="form-control" type="text" name="n" id="" value="<?php echo $c['employee_name'];?>" readonly>
 
               </td>
               <td>

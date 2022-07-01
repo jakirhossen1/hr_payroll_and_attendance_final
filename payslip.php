@@ -220,7 +220,7 @@ require "inwordsFunction.php";
                                     
                                     
                                     ?>
-                                    <div class="d-flex flex-column mt-2"> <span class="fw-bolder"><?php echo $row['Name'];?></span> <span class="mt-4">Authorised Signature</span> </div>
+                                    <div class="d-flex flex-column mt-2"> <span class="fw-bolder"><h5><?php echo $row['Name'];?></h5></span><span class=" mb-2"><img src="FILE777.JPG" style="height:50px; width: 200px;"></span> <span ><h5> Authorised Signature </h5></span> </div>
                                 </div>
                             </div>
                             
