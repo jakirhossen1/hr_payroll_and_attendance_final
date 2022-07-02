@@ -299,7 +299,7 @@
               <ul>
                 <li> <a href="createPaySlip.php"><i class="bi bi-arrow-right-short"></i>Create Pay Slip</a>
                 </li>
-                <li> <a href="paySlipList.php"><i class="bi bi-arrow-right-short"></i>Pay Slip List</a>
+                <li> <a href="paySlipList.php"><i class="bi bi-arrow-right-short"></i>Pay Slip List 1</a>
                 <li> <a href="payslipmanage.php"><i class="bi bi-arrow-right-short"></i>Manage PaySlip</a>
                 </li>
               </ul>
