@@ -50,7 +50,7 @@ if(!isset($_SESSION['userName'])){
     <div class="wrapper">
         <!--start top header-->
         <header class="top-header">
-            <?php echo include("headers.php")?>
+            <?php echo include("headers.php")?>   
         </header>
         <!--end top header-->
 
