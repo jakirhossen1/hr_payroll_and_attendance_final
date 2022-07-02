@@ -288,8 +288,8 @@ if(!isset($_SESSION['userName'])){
                                                     image.onload = function () {
                                                         var height = this.height;
                                                         var width = this.width;
-                                                        if (height > 300 || width > 301) {
-                                                            alert("Height and Width must not exceed 200px.");
+                                                        if (height > 1200 || width > 800) {
+                                                            alert("Height and Width must not exceed 300px.");
                                                             return false;
                                                         }
                                                          $('#preview-image').attr('src', e.target.result).width(100).height(100);
