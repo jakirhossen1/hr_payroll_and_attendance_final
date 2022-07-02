@@ -129,7 +129,7 @@ if(!isset($_SESSION['userName'])){
                     $result = mysqli_query($conn, $s);
                     $num = mysqli_num_rows($result);
 
-                    $sq = "SELECT * FROM employee WHERE email='$email'"
+                    $sq = "SELECT * FROM employee WHERE email='$email'";
                     $results = mysqli_query($conn, $sq);
                     $employeess = mysqli_num_rows($results);
 
@@ -444,9 +444,9 @@ if(!isset($_SESSION['userName'])){
                                     ?>
                                     <input class="form-control" type="hidden" name="employee_code" id="" placeholder="Employee Code" value="<?php echo $result?>">
                                     <label>Employee Id:</label>
-                                    <input class="form-control" type="text" name="" id="" placeholder="Employee Code" value="<?php echo $result?>" disabled><br>
+                                    <input class="form-control" type="text" name="" id="" placeholder="Employee Code" value="<?php echo $result?>"readonly><br>
                                     <label>Created By:</label>
-                                    <input class="form-control" type="text" name="created_by" id="created_by" value="<?php echo $_SESSION['full_name']?>" readonly ><br>
+                                    <input class="form-control" type="text" name="created_by" id="created_by" value="<?php echo $_SESSION['full_name']?>"readonly ><br>
 
                                 </div>
                                 <div class="modal-footer">
