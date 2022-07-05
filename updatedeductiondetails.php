@@ -13,8 +13,8 @@
         $deduction_status=$_POST['deduction_status'];
         
         
-        $sql="UPDATE addition SET employee_id='$employee_id', deduction_code='$deduction_code', description='$description', amount='$amount',month='$month',deduction_year='$deduction_year',deduction_status='$deduction_status' WHERE deduction_id='$Id'";
-        $query= mysqli_query($conn,$sql);
+        $sql="UPDATE deduction SET employee_id='$employee_id',deduction_code='$deduction_code',description='$description',amount='$amount',month='$month',deduction_year='$deduction_year',deduction_status='$deduction_status' WHERE deduction_id='$Id'";
+        $query= mysqli_query($conn, $sql);
         
         header("location:managededuction.php");
     }

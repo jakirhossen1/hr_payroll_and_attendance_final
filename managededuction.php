@@ -82,7 +82,7 @@
       
         <div class="">
           <div class="row">
-            <div class="col-offset-md-2"><a href="Addition.php" class="btn btn-primary bx-pull-right mb-3">Add Deduction</a></div>
+            <div class="col-offset-md-2"><a href="deduction.php" class="btn btn-primary bx-pull-right mb-3">Add Deduction</a></div>
             
           </div>
           <div class="row">
