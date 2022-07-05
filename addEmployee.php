@@ -320,7 +320,7 @@ if(!isset($_SESSION['userName'])){
                                     <span id="errpermanent_address"></span><br>
                                     <input class="form-control" type="text" name="employ_nid" id="employ_nid" placeholder="Pasport/NID" onkeyup="change(this.id,'erremploy_nid')" onblur="change(this.id,'erremploy_nid')" >
                                     <span id="erremploy_nid"></span><br>
-                                    <input class="form-control" type="text" name="employee_status" id="employee_status" placeholder="Employee Status" onkeyup="change(this.id,'erremployee_status')" onblur="change(this.id,'erremployee_status')" >
+                                    <input class="form-control" type="text" name="employee_status" id="employee_status" placeholder="Employee Status" onkeyup="change(this.id,'erremployee_status')" onblur="change(this.id,'erremployee_status')"hidden >
                                     <span id="erremployee_status"></span><br>
                                 </div>
 
