@@ -124,7 +124,7 @@
                         <td><?php echo $row['claims_date'] ?></td>
                         <td> <?php echo $row['type_of_expense'] ?></td>
                         <td> <?php echo $row['total_amount'] ?></td>
-                        <td> <?php echo $row['documents'] ?></td>
+                        <td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td>
                         <td><?php
                             $status = "<span class=' btn-primary'> Pending </span>";
                             if($row['claims_status'] == "Paid") {
@@ -180,7 +180,7 @@
                         <td><?php echo $row['claims_date'] ?></td>
                         <td> <?php echo $row['type_of_expense'] ?></td>
                         <td> <?php echo $row['total_amount'] ?></td>
-                        <td> <?php echo $row['documents'] ?></td>
+                        <td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td>
                         <td><?php
                             $status = "<span class=' btn-primary'> Pending </span>";
                             if($row['claims_status'] == "Paid") {
@@ -241,7 +241,7 @@
                         <td><?php echo $row['claims_date'] ?></td>
                         <td> <?php echo $row['type_of_expense'] ?></td>
                         <td> <?php echo $row['total_amount'] ?></td>
-                        <td> <?php echo $row['documents'] ?></td>
+                        <td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td>
                         <td><?php
                             $status = "<span class=' btn-primary'> Pending </span>";
                             if($row['claims_status'] == "Paid") {

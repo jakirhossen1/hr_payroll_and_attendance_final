@@ -151,8 +151,8 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="file" name="files" id="files" class="form-control mt-3 mb-3 " onkeyup="change(this.id,'errfiles')" onblur="change(this.id,'errfiles')" >
-                        <span id="errfiles"></span>
+                        <input type="file" name="documents" id="documents" class="form-control mt-3 mb-3 " onkeyup="change(this.id,'errdocuments')" onblur="change(this.id,'errdocuments')" >
+                        <span id="errdocuments"></span>
                     </div>
                 </div>
                 <div class="row">
@@ -186,7 +186,7 @@ if(isset($_POST['submit'])){
         var Dates= $("#dates").val();
         var Expensename= $("#expensename").val();
         var Amount= $("#amount").val();
-        var Files= $("#files").val();
+        var Documents= $("#documents").val();
         var Claimstatus= $("#claimstatus").val();
         
       if(SelectEmployees==""){
@@ -227,14 +227,14 @@ if(isset($_POST['submit'])){
             $("#amount").attr("style","border:");
             $("#erramount").html("");
         }
-     if(Files==""){
-            $("#files").attr("style","border: 3px solid red");
-            $("#errfiles").css("color","red");
-            $("#errfiles").html("Please select claim files");
+     if(Documents==""){
+            $("#documents").attr("style","border: 3px solid red");
+            $("#errdocuments").css("color","red");
+            $("#errdocuments").html("Please select claim files");
             return false;
         }else{
-            $("#files").attr("style","border:");
-            $("#errfiles").html("");
+            $("#documents").attr("style","border:");
+            $("#errdocuments").html("");
         }
       if(Claimstatus==""){
             $("#claimstatus").attr("style","border: 3px solid red");

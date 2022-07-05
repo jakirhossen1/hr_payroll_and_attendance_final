@@ -12,7 +12,7 @@
         $claims_status=$_POST['claims_status'];
         
         
-        $sql="UPDATE claims SET employee_id='$employee_id', claims_date='$claims_date', type_of_expense='$type_of_expense', total_amount='$total_amount',documents='$documents', claims_status='$claims_status' WHERE claims_id='$Id'";
+        $sql="UPDATE claims SET employee_id='$employee_id', claims_date='$claims_date', type_of_expense='$type_of_expense', total_amount='$total_amount', claims_status='$claims_status' WHERE claims_id='$Id'";
         $query= mysqli_query($conn, $sql);
         
         header("location:manageclaims.php ");
