@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     $Amount=$_POST['Amount'];
     $month=$_POST['month'];
     $year=$_POST['year'];
-    $Status=$_POST['Status'];    
+    $Status="Pending";    
 
     $s="SELECT addition_code FROM addition WHERE addition_code='$Additioncode'";
     $qurey=mysqli_query($conn,$s);
@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
         $sql="INSERT INTO `addition` (`employee_id`, `addition_code`, `description`, `amount`, `month`, `addition_year`, `addition_status`) VALUES ('$employee', '$Additioncode', '$Description', '$Amount', '$month', '$year', '$Status')";
         $qurey=mysqli_query($conn,$sql);
         echo "Addition Completed!";
+        header("location:additionmanage.php");
     }   
 }
 ?>
@@ -182,10 +183,10 @@ if(isset($_POST['submit'])){
             </div>
             
           </div>
-          <select class="form-select mt-3" name="Status" id="Status" onkeyup="change(this.id,'errselect3','data')" onblur="change(this.id,'errselect3','data')">
+          <select class="form-select mt-3" name="Status" id="Status" onkeyup="change(this.id,'errselect3','data')" onblur="change(this.id,'errselect3','data')" hidden>
                
             <option value="">Status</option>
-            <option value="Aproved">Aproved</option>
+            <!-- <option value="Aproved">Aproved</option> -->
             <option value="Pending">Pending</option>
 
           </select>

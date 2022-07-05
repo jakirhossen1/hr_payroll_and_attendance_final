@@ -162,7 +162,11 @@
                 </li>
                 <li> <a href="Addition.php"><i class="bi bi-arrow-right-short"></i>Add Addition </a>
                 </li>
+                <li> <a href="additionmanage.php"><i class="bi bi-arrow-right-short"></i>Manage Addition </a>
+                </li>
                 <li> <a href="deduction.php"><i class="bi bi-arrow-right-short"></i>Add Deduction </a>
+                </li>
+                <li> <a href="managededuction.php"><i class="bi bi-arrow-right-short"></i>Manage Deduction </a>
                 </li>
                  <li> <a href="expenseList.php"><i class="bi bi-arrow-right-short"></i>Expense List </a>
                 </li>
@@ -357,7 +361,11 @@
                 </li>
                 <li> <a href="Addition.php"><i class="bi bi-arrow-right-short"></i>Add Addition </a>
                 </li>
+                <li> <a href="additionmanage.php"><i class="bi bi-arrow-right-short"></i>Manage Addition </a>
+                </li>
                 <li> <a href="deduction.php"><i class="bi bi-arrow-right-short"></i>Add Deduction </a>
+                </li>
+                <li> <a href="managededuction.php"><i class="bi bi-arrow-right-short"></i>Manage Deduction </a>
                 </li>
                  <li> <a href="expenseList.php"><i class="bi bi-arrow-right-short"></i>Expense List </a>
                 </li>

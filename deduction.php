@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
     $Amount=$_POST['Amount'];
     $month=$_POST['month'];
     $year=$_POST['year'];
-    $Status=$_POST['Status'];    
+    $Status="Pending";    
 
     $s="SELECT deduction_code FROM deduction WHERE deduction_code='$Deductioncode'";
     $qurey=mysqli_query($conn,$s);
@@ -26,6 +26,7 @@ if(isset($_POST['submit'])){
         $sql="INSERT INTO `deduction` (`employee_id`, `deduction_code`, `description`, `amount`, `month`, `deduction_year`, `deduction_status`) VALUES ('$employee', '$Deductioncode', '$Description', '$Amount', '$month', '$year', '$Status')";
         $qurey=mysqli_query($conn,$sql);
         echo "Deduction Completed!";
+        header("location:managededuction.php");
     }   
 }
 ?>
@@ -182,10 +183,10 @@ if(isset($_POST['submit'])){
             </div>
             
           </div>
-          <select class="form-select mt-3" name="Status" id="Status" onkeyup="change(this.id,'errStatus')" onblur="change(this.id,'errStatus')">
+          <select class="form-select mt-3" name="Status" id="Status" onkeyup="change(this.id,'errStatus')" onblur="change(this.id,'errStatus')" hidden>
               
             <option value="">Status</option>
-            <option value="Aproved">Aproved</option>
+            <!-- <option value="Aproved">Aproved</option> -->
             <option value="Pending">Pending</option>
 
           </select>
