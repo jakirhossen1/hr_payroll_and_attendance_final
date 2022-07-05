@@ -115,7 +115,7 @@ if(!isset($_SESSION['userName'])){
                     $password = $_POST['employeepass'];
                     $userRole = "4";
                     $accountCreation = date("Y-m-d");
-                    $status = "active";
+                    $status = "Active";
 
                     if(empty($fullname)) {
                         $alert['errors'] = "Please enter your fullname.";
@@ -155,7 +155,7 @@ if(!isset($_SESSION['userName'])){
                             $preaddress=$_POST['present_address'];
                             $peraddress=$_POST['permanent_address'];
                             $passNid=$_POST['employ_nid'];
-                            $status=$_POST['employee_status'];
+                            $status="Active";
                             //$Empemail=$_POST['employeeemail'];
                             $Emppass=$_POST['employeepass'];
                             $EmptypeId=$_POST['employment_id'];
