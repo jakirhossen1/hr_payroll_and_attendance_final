@@ -180,7 +180,7 @@ if(!isset($_SESSION['userName'])){
                                 
                                 $sqls = "INSERT INTO `user_table` ( `user_name`, `full_name`, `email`, `phone`, `password`, `role_id`, `account_creation_date`, `status`, `created_by`) VALUES ('$fullname', '$fullname', '$email', '$phone', '$Emppass', '4', '$today', '$status','$Created_by')";
 
-                                $user_id = "SELECT 'user_id' FROM employee WHERE email='$email'";
+                                $user_id = "SELECT `user_id` FROM employee WHERE email='$email'";
 
                                 $query = mysqli_query($conn, $sqls);
                                 if ($query) {
@@ -191,7 +191,7 @@ if(!isset($_SESSION['userName'])){
                                     if ($nums == 1) {
                                         $alert['errors'] = "Employee  Already Exits";
                                     } else {
-                                        $sql = "INSERT INTO employee (employee_type_id,department_id,designation_id,employee_name, appointment_date, date_of_birth, employee_code, email, joining_date, employee_status, religion, nationality, district, Countries, postal_code, Passport_or_NID, gender, maritial_Status, present_address, permanent_address, picture, phone, created_by, 'user_id') VALUES ( '$EmptypeId', '$deptId','$designationId', '$fullname', '$appointdate', '$DOB', '$Empcode', '$email', '$joindate', '$status', '$religion', '$nationality', '$distic', '$country', '$postCode', '$passNid', '$gender', '$marital_status', '$preaddress', '$peraddress', '$path', '$phone', '$Created_by', '$user_id');";
+                                        $sql = "INSERT INTO `employee` (`employee_type_id`,`department_id`,`designation_id`,`user_id`,`employee_name`, `appointment_date`, `date_of_birth`, `employee_code`, `email`, `joining_date`, `employee_status`, `religion`, `nationality`, `district`, `Countries`, `postal_code`, `Passport_or_NID`, `gender`, `maritial_Status`, `present_address`,`permanent_address`,`picture`,`created_by`,`phone`,`password`) VALUES ( '$EmptypeId', '$deptId','$designationId','$user_id','$fullname', '$appointdate', '$DOB', '$Empcode', '$email', '$joindate', '$status', '$religion', '$nationality', '$distic', '$country', '$postCode', '$passNid', '$gender', '$marital_status', '$preaddress', '$peraddress', '$path','$Created_by','$phone','$Emppass')";
                                         $query = mysqli_query($conn, $sql);
                                         $alert['success'] =  "Employee Added.";
                                     }
@@ -288,7 +288,7 @@ if(!isset($_SESSION['userName'])){
                                                     image.onload = function () {
                                                         var height = this.height;
                                                         var width = this.width;
-                                                        if (height > 1200 || width > 800) {
+                                                        if (height > 2000 || width > 1600) {
                                                             alert("Height and Width must not exceed 300px.");
                                                             return false;
                                                         }
@@ -320,8 +320,8 @@ if(!isset($_SESSION['userName'])){
                                     <span id="errpermanent_address"></span><br>
                                     <input class="form-control" type="text" name="employ_nid" id="employ_nid" placeholder="Pasport/NID" onkeyup="change(this.id,'erremploy_nid')" onblur="change(this.id,'erremploy_nid')" >
                                     <span id="erremploy_nid"></span><br>
-                                    <input class="form-control" type="text" name="employee_status" id="employee_status" placeholder="Employee Status" onkeyup="change(this.id,'erremployee_status')" onblur="change(this.id,'erremployee_status')"hidden >
-                                    <span id="erremployee_status"></span><br>
+                                    <input class="form-control" type="hidden" name="employee_status" id="employee_status"   >
+                                    <br>
                                 </div>
 
 
@@ -533,7 +533,7 @@ if(!isset($_SESSION['userName'])){
             var Present_address= $("#present_address").val();
             var Permanent_address= $("#permanent_address").val();
             var Employ_nid= $("#employ_nid").val();
-            var employee_status= $("#employee_status").val();
+            //var employee_status= $("#employee_status").val();
             var Email= $(".email").val();
             var Employeepass= $("#employeepass").val();
             var Employment_id= $("#employment_id").val();
@@ -681,12 +681,12 @@ if(!isset($_SESSION['userName'])){
                $("#employ_nid").attr("style","border:");
                $("#erremploy_nid").html("");
            }
-          if(employee_status==""){
-                $("#employee_status").attr("style","border: 3px solid red");
-                $("#erremployee_status").css("color","red");
-                $("#erremployee_status").html("Please select your employee status");
-                return false;
-            }
+          // if(employee_status==""){
+          //       $("#employee_status").attr("style","border: 3px solid red");
+          //       $("#erremployee_status").css("color","red");
+          //       $("#erremployee_status").html("Please select your employee status");
+          //       return false;
+          //   }
             else{
                 $("#employee_status").attr("style","border:");
                 $("#erremployee_status").html("");
