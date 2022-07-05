@@ -214,8 +214,8 @@ if(!isset($_SESSION['userName'])){
                 </div>
 
                 <div class="form-group">
-                  <label class="label">Status</label>
-                  <select class="form-select" >
+                  <!-- <label class="label">Status</label> -->
+                  <select class="form-select" hidden>
                     <option value="">Pending</option>
                   </select>
                     <span id="errsupport_document"></span>

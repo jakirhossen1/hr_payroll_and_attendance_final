@@ -463,7 +463,7 @@ for ($i = 1; $i <= $day_count; $i++) {
                                     </select>
                                     <span id="errdeductions"></span>
                                     <br>
-                                    <select class="form-select" name="salarystatus" id="salarystatus" onkeyup="change(this.id,'errsalarystatus','status')" onblur="change(this.id,'errsalarystatus','status')" >
+                                    <select class="form-select" name="salarystatus" id="salarystatus" onkeyup="change(this.id,'errsalarystatus','status')" onblur="change(this.id,'errsalarystatus','status')" hidden >
                                         <option class="form-control" value="" selected>Select Status</option>
                                         <!-- <option class="form-control" value="Paid">Paid</option>
                                         <option class="form-control" value="Unpaid">Unpaid</option> -->

@@ -34,6 +34,8 @@
                 </li>
                 <li> <a href="claims.php"><i class="bi bi-arrow-right-short"></i>Claims</a>
                 </li>
+                <li> <a href="manageclaims.php"><i class="bi bi-arrow-right-short"></i>Manage Claims</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -219,6 +221,8 @@
                 <li> <a href="AwardList.php"><i class="bi bi-arrow-right-short"></i>Employee Award</a>
                 </li>
                 <li> <a href="claims.php"><i class="bi bi-arrow-right-short"></i>Claims</a>
+                </li>
+                <li> <a href="manageclaims.php"><i class="bi bi-arrow-right-short"></i>Manage Claims</a>
                 </li>
               </ul>
             </li>

@@ -14,14 +14,17 @@ if(isset($_POST['submit'])){
     $dates=$_POST['dates'];
     $expensename=$_POST['expensename'];
     $amount=$_POST['amount'];
-    $files=$_POST['files'];
-    $status=$_POST['status'];
+    $dir='uploads/';
+    $path=$dir.basename($_FILES['documents']['name']);
+    $temp=$_FILES['documents']['tmp_name'];
+    if(move_uploaded_file($temp,$path)){}
+    $status="Pending";
     
     
-        $sql="INSERT INTO claims(employee_id,claims_date,type_of_expense,total_amount,claims_status) Values('$SelectEmployee','$dates','$expensename','$amount','$status')";
-        $qurey=mysqli_query($conn,$sql);
-        echo "Expense Added!";
-       
+    $sql="INSERT INTO claims(employee_id,claims_date,type_of_expense,total_amount,documents,claims_status) Values('$SelectEmployee','$dates','$expensename','$amount','$path','$status')";
+    $qurey=mysqli_query($conn,$sql);
+    echo "Expense Added!";
+    header("location:manageclaims.php");
 }
 ?>
 <!doctype html>
@@ -154,11 +157,11 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="row">
                      <div class="col-md-12">
-                         <select class="form-select mt-3 mb-3" name="status" id="claimstatus" onkeyup="change(this.id,'errclaimstatus','Claim')" onblur="change(this.id,'errclaimstatus','Claim')" >
+                         <select class="form-select mt-3 mb-3" name="status" id="claimstatus" onkeyup="change(this.id,'errclaimstatus','Claim')" onblur="change(this.id,'errclaimstatus','Claim')"hidden >
                              
                              <option value="Select">Select Claims Status</option>
-                             <option value="Paid">Paid</option>
-                             <option value="Unpaid">Unpaid</option>
+                             <option value="Paid">Pending</option>
+                             <!-- <option value="Unpaid">Unpaid</option> -->
                          </select>
                          <span id="errclaimstatus"></span>
                     </div>
@@ -285,27 +288,7 @@ if(isset($_POST['submit'])){
 
 
 
-<?php 
-       
-    if(isset($_POST['submit'])){
-        $dates=$_POST['dates'];
-        $expensename=$_POST['expensename'];
-        $amount=$_POST['amount'];
-        $picture="Samad";
-        $status=$_POST['status'];
-        $select="Jakir";
-        $sql="INSERT INTO `claims` (`claims_date`, `type_of_expense`, `total_amount`, `file`, `claims_status`, `claim_status`) VALUES ('$dates', '$expensename', '$amount', '$picture', '$status', '$select') ";
-        $query= mysqli_query($conn, $sql);
-        if($query){
-            echo 'Insert Data Successfully';
-        }
-        else{
-            echo 'Data Insert Failed!';
-        }
-    }
 
-
-?>
 
            
            

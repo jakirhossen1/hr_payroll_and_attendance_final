@@ -194,7 +194,7 @@ session_start();
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="<?php echo $row['picture'];?>" alt=""/>
+                            <img src="<?php echo $row['picture'];?>" alt="Image is not found!"/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
