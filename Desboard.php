@@ -187,14 +187,14 @@ if(!isset($_SESSION['userName'])){
                             <div class="d-flex align-items-center">
                                 <div>
                                     <?php 
-                                        $today=date("Y-m-d");
-                                        $sqls="SELECT COUNT(leave_start_date) as leav From leaves WHERE leave_start_date='$today'";
+                                                 $today=date("Y-m-d");
+                                        $sqls="SELECT SUM(total_amount) as amount From claims WHERE claims_date='$today'";
                                         $querys=mysqli_query($conn,$sqls);
                                         $nums=mysqli_fetch_array($querys);
                                       
                                       ?>
                                     <p class="mb-0 text-secondary">Total Claim</p>
-                                    <h4 class="my-1"><?php echo $nums['leav'];?></h4>
+                                    <h4 class="my-1"><?php echo $nums['amount'];?></h4>
 
                                 </div>
                                 <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-bell-slash"></i>
