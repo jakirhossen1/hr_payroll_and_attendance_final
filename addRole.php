@@ -9,7 +9,7 @@
 if(isset($_POST['submit'])){
     $role_name=$_POST['rolename'];
     $permission=$_POST['permission'];
-    $user_role_status=$_POST['status'];
+    $user_role_status="Active";
     $s="SELECT * FROM user_role WHERE role_name='$role_name'";
     $result=mysqli_query($conn,$s);
     $num=mysqli_num_rows($result);
@@ -107,15 +107,12 @@ if(isset($_POST['submit'])){
                 <span id="errpermission"></span>
             </div>
             <div class="col-md-3">
-                <select  name="status" class="form-select" id="status" onkeyup="change(this.id,'errstatus')" onblur="change(this.id,'errstatus')"  >
+                <select  name="status" class="form-select" id="status" hidden  >
                    
                     <option >Select Your Status</option>
-                    <option value="active" >Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="Active" >Active</option>
+                    <option value="Inactive">Inactive</option>
                 </select>
-                 <span id="errstatus"></span>
-            </div>
-            <div class="col-md-2">
                 <input class="btn btn-primary  " type="submit" name="submit" value="Submit" >
             </div>
        </div>

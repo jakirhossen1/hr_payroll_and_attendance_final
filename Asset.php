@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
     $Manufacturee=$_POST['Manufacturee'];
     $Serial=$_POST['Serial']; 
     $Warrenty=$_POST['Warrenty'];
-    $SalaryStatus=$_POST['SalaryStatus'];   
+    $SalaryStatus="Paid";   
     $s="SELECT asset_code FROM asset WHERE asset_code='$assetcode'";
     $qurey=mysqli_query($conn,$s);
     $num=mysqli_num_rows($qurey);
@@ -173,19 +173,22 @@ if(isset($_POST['submit'])){
                             <select class="form-select mt-3 mb-3" name="Warrenty" id="Warrenty" onkeyup="change(this.id,'errWarrenty','data')" onblur="change(this.id,'errWarrenty','data')">
                                 
                                 <option  value="" selected>Select Product Warrenty</option>
+                                <option  value="6 Months">6 Months</option>
                                 <option  value="1 Year">1 year</option>
+                                <option  value="2 Year">2 year</option>
+                                <option  value="3 Year">3 year</option>
                             </select>
                             <span id="errWarrenty"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <select class="form-select mt-3 mb-3" name="SalaryStatus" id="SalaryStatus" onkeyup="change(this.id,'errSalaryStatus','data')" onblur="change(this.id,'errSalaryStatus','data')">
+                            <select class="form-select mt-3 mb-3" name="SalaryStatus" id="SalaryStatus" hidden >
                                 
                                 <option  value="" selected>Select Salary Status</option>
                                 <option  value="Paid">Paid</option>
                             </select>
-                            <span id="errSalaryStatus"></span>
+                            
                         </div>
                     </div>
                     <div class="row">

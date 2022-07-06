@@ -90,7 +90,7 @@
             <table class="table table-striped">
               <tr>
                 <th>SL</th>
-                <th>Department Name</th>                
+                <th>Department Name</th>              
                 <th>Action</th>
               </tr>
                 <?php 
@@ -100,7 +100,6 @@
                   $n=1;
                   $sql = "SELECT * FROM department";
                   $query=mysqli_query($conn,$sql);
-
                   while($row=mysqli_fetch_array($query)){
 
                 ?>

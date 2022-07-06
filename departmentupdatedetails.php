@@ -12,8 +12,8 @@
         
         
         $id=$_POST['id'];
-        $department=$_POST['department'];
-        $sqls="UPDATE  designation SET designation='$degination' WHERE designation_Id='$Ids'";
+        $designation=$_POST['designation'];
+        $sqls="UPDATE  designation SET designation='$designation' WHERE designation_Id='$id'";
         $querys= mysqli_query($conn,$sqls);
         
         header("location:departmentManage.php");

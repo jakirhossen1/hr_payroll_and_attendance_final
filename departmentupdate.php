@@ -99,7 +99,7 @@
         </div>
         <?php
         $id=$_GET['aid'];
-        $sqls="SELECT * FROM designation WHERE designation_Id='$Id';";
+        $sqls="SELECT * FROM designation WHERE designation_Id='$id';";
         $querys= mysqli_query($conn,$sqls);
         while ($row= mysqli_fetch_array($querys)){
 
@@ -107,7 +107,7 @@
         <div class="col-md-4">
           <div class="col">
               <input type="hidden" value="<?php echo $row['0'];?>" name="id" />
-              <input type="text" name="degisnation" class="form-control" value="<?php echo $row['1'];?>" >
+              <input type="text" name="designation" class="form-control" value="<?php echo $row['1'];?>" >
           </div>
         </div> 
         <?php }?>
