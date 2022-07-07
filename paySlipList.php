@@ -1,7 +1,9 @@
-<?php require "connect.php";
+<?php 
 
-date_default_timezone_set("Asia/Dhaka");
-session_start();
+	echo include("connect.php");
+
+	date_default_timezone_set("Asia/Dhaka");
+	session_start();
 
 ?>
 
@@ -39,8 +41,11 @@ session_start();
 
     <title>HR PAYROLL SOFTWARE</title>
     <style>
+	
         .forms-body {
+			
             margin: 10px;
+			
         }
 
     </style>
@@ -53,13 +58,17 @@ session_start();
     <div class="wrapper">
         <!--start top header-->
         <header class="top-header">
-            <?php require "headers.php"?>
+		
+            <?php echo include("headers.php"); ?>
+			
         </header>
         <!--end top header-->
 
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
-            <?php require "SidebarMenu.php"?>
+		
+            <?php echo include("SidebarMenu.php"); ?>
+			
         </aside>
         <!--end sidebar -->
 
@@ -73,51 +82,54 @@ session_start();
 
                     <div class="row">
                         <div class="col-md-12">
+						
                             <h3 style="margin:10px;">Pay Slip List</h3>
+							
                         </div>
                     </div>
                     <hr>
+					
                     <form action="" method="post">
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3">
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-3">
+								<select class="form-select" name="year" id="year">
+									<?php 
+									
+										for($i=1900;$i<=date("Y");$i++){
+													
+									?>
+									<option class="form-control" value="<?php echo $i;?>" selected><?php echo $i;?></option>
+									<?php }?>
+								</select>
+							</div>
+							
+							<div class="col-md-3">
+								<select name="month" class=" form-select" id="month" onchange="paySlip()">
+									<option value="">Select Month</option>
+									<option value="January">January</option>
+									<option value="February">February</option>
+									<option value="March">March</option>
+									<option value="April">April</option>
+									<option value="May">May</option>
+									<option value="June">June</option>
+									<option value="July">July</option>
+									<option value="August">August</option>
+									<option value="September">September</option>
+									<option value="October">October</option>
+									<option value="November">November</option>
+									<option value="December">December</option>
+								</select>
 
-                            <select class="form-select" name="year" id="year">
-                                <?php 
-                                                for($i=1900;$i<=date("Y");$i++){
-                                                
-                                                ?>
-                                <option class="form-control" value="<?php echo $i;?>" selected><?php echo $i;?></option>
-                                <?php }?>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-
-                            <select name="month" class=" form-select" id="month" onchange="paySlip()">
-                                <option value="">Select Month</option>
-                                <option value="January">January</option>
-                                <option value="February">February</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                    <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
-                            </select>
-
-                        </div>
-                        <div class="col-md-3"></div>
-                    </div>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
                     </form>
                     
                     
                     <?php 
-                    $_SESSION
-                    
+					
+						$_SESSION
                     
                     ?>
 
@@ -181,7 +193,30 @@ session_start();
 
     </div>
     <!--end wrapper-->
+	<script>
+	
+		function paySlip() {
+			
+			var year = $('#year').val();
+			var Month = $('#month').val();
+			$.ajax({
+				url: 'getPayslipList.php',
+				method: 'POST',
+				dataType: 'html',
+				data: {
+					year: year,
+					Month: Month
+				},
+				success: function(data) {
 
+					$('#payslipShow').html(data);
+
+				}
+
+			})
+		}
+
+	</script>
 
     <!-- Bootstrap bundle JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -208,28 +243,7 @@ session_start();
 
     </script>
 
-    <script>
-        function paySlip() {
-            var year = $('#year').val();
-            var Month = $('#month').val();
-            $.ajax({
-                url: 'getPayslipList.php',
-                method: 'POST',
-                dataType: 'html',
-                data: {
-                    year: year,
-                    Month: Month
-                },
-                success: function(data) {
-
-                    $('#payslipShow').html(data);
-
-                }
-
-            })
-        }
-
-    </script>
+    
 
 </body>
 

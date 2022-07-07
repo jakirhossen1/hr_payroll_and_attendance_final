@@ -1,13 +1,17 @@
 <?php
-    require "connect.php";
+
+    echo include("connect.php");
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
-    if (!isset($_SESSION['userName']))
-    {
+    if (!isset($_SESSION['userName'])){
+		
         header("location:Login.php");
+		
     }
+	
 ?>
+
 
 <!doctype html>
 <html lang="en" class="light-theme">
@@ -42,8 +46,11 @@
 
     <title>HR PAYROLL SOFTWARE</title>
     <style>
+	
         .forms-body {
+			
             margin: 10px;
+			
         }
 
     </style>
@@ -56,43 +63,45 @@
     <div class="wrapper">
         <!--start top header-->
         <header class="top-header">
-            <?php require "headers.php"?>
+		
+            <?php echo include("headers.php"); ?>
+			
         </header>
         <!--end top header-->
 
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
-            <?php require "SidebarMenu.php"?>
+		
+            <?php echo include("SidebarMenu.php"); ?>
+			
         </aside>
         <!--end sidebar -->
 
         <!--start content-->
         <main class="page-content">
-
-            <!--           Enter Your Code here-->
             <div class="modal-content">
                 <div class="forms-body">
-
                     <div class="row">
                         <div class="col-md-12">
+						
                             <h3 style="margin:10px;">User Manage</h3>
+							
                         </div>
                         <hr>
-                        <!--       Enter Code Here-->
+						
                         <div class="row">
                             <div class="col-md-12">
+							
                                 <a href="addUser.php" class="btn btn-primary bx-pull-right mb-3">Add User</a>
+								
                             </div>
                         </div>
+						
                         <div class="row">
                             <div class="col-md-12">
-                                
                                 <div class="table-responsive">
-
                                     <table id="example" class="table table-striped table-bordered">
                                         <thead>
-
-
                                             <tr>
                                                 <th>SL</th>
                                                 <th>Name</th>
@@ -103,47 +112,41 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                             <tbody>
-                                        <?php 
-              include 'connect.php';
-              $n=1;
-              $sql = "SELECT * FROM user_table";
-              $query=mysqli_query($conn,$sql);
-              while($row=mysqli_fetch_array($query)){
-              ?>
-                                   
-                                            <tr>
-                                                <td><?php echo $n++?></td>
-                                                <td><?php echo $row['full_name']?></td>
-                                                <td><?php echo $row['email']?></td>
-                                                <td><?php echo $row['phone']?></td>
-                                                <td><?php echo $row['status']?></td>
-                                                <td><?php echo $row['account_creation_date']?></td>
-                                                <td>
-                                                    <a class="btn btn-danger" href="usermanagedelete.php?aid=<?php echo $row['user_id'];?>">Delete</a>
-                                                    <a class="btn btn-success" href="userupdate.php?aid=<?php echo $row['user_id'];?>">Update</a>
-                                                </td>
-                                            </tr>
-                                              <?php } ?>
+                                        <tbody>
+											<?php
+											
+												echo include("connect.php");
+											  
+												$n=1;
+												$sql = "SELECT * FROM user_table";
+												$query=mysqli_query($conn,$sql);
+											  
+												while($row=mysqli_fetch_array($query)){
+												  
+											?>
+									   
+											<tr>
+												<td><?php echo $n++?></td>
+												<td><?php echo $row['full_name']?></td>
+												<td><?php echo $row['email']?></td>
+												<td><?php echo $row['phone']?></td>
+												<td><?php echo $row['status']?></td>
+												<td><?php echo $row['account_creation_date']?></td>
+												<td>
+													<a class="btn btn-danger" href="usermanagedelete.php?aid=<?php echo $row['user_id'];?>">Delete</a>
+													<a class="btn btn-success" href="userupdate.php?aid=<?php echo $row['user_id'];?>">Update</a>
+												</td>
+											</tr>
+											<?php } ?>
                                         </tbody>
-                                      
                                         <tfoot></tfoot>
                                     </table>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
-
-
-
-
 
         </main>
         <!--end page main-->
@@ -181,6 +184,7 @@
     <script src="assets/js/index.js"></script>
 
     <script>
+	
         new PerfectScrollbar(".best-product")
         new PerfectScrollbar(".top-sellers-list")
 

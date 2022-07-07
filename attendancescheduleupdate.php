@@ -1,11 +1,16 @@
-<?php 
-require "connect.php";
+<?php
+ 
+	echo include("connect.php");
+	
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
-    if (!isset($_SESSION['userName']))
-    {
+	
+    if (!isset($_SESSION['userName'])){
+		
         header("location:Login.php");
+		
     }
+	
 ?>
 <!doctype html>
 <html lang="en" class="light-theme">
@@ -40,8 +45,11 @@ require "connect.php";
 
     <title>HR PAYROLL SOFTWARE</title>
     <style>
+	
         .forms-body {
+			
             margin: 10px;
+			
         }
 
     </style>
@@ -54,20 +62,22 @@ require "connect.php";
     <div class="wrapper">
         <!--start top header-->
         <header class="top-header">
-            <?php require "headers.php"?>
+		
+            <?php echo include("headers.php"); ?>
+			
         </header>
         <!--end top header-->
 
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
-            <?php require "SidebarMenu.php"?>
+		
+            <?php echo include("SidebarMenu.php"); ?>
+			
         </aside>
         <!--end sidebar -->
 
         <!--start content-->
         <main class="page-content">
-
-            <!--           Enter Your Code here-->
             <div class="modal-content">
                 <div class="forms-body">
                     <?php 
@@ -84,48 +94,61 @@ require "connect.php";
 
                         <div class="row">
                             <div class="col-md-12">
+							
                                 <h3 style="margin:10px;">Update Attendance Schedule</h3>
+								
                             </div>
                         </div>
                         <hr>
+						
                         <div class="row">
-                            <div class="col-md-3">
-
-                            </div>
+                            <div class="col-md-3"></div>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-12">
+									
                                         <input type="hidden" name="Id" value="<?php echo $row['Schedule_id'];?>">
                                         Signin Time Setup:<input type="time" name="signin" class="form-control mt-3 mb-3 " value="<?php echo $row['Signin_in_time_setup'];?>">
+										
                                     </div>
                                 </div>
+								
                                 <div class="row">
                                     <div class="col-md-12">
+									
                                         Signout Time Setup:<input type="time" name="signout" class="form-control mt-3 mb-3 " value="<?php echo $row['Sign_out_time_setup'];?>">
+										
                                     </div>
                                 </div>
+								
                                 <div class="row">
                                     <div class="col-md-12">
+									
                                         Late Count Time:<input type="time" name="latecount" class="form-control mt-3 mb-3 " value="<?php echo $row['Late_Count_time'];?>">
+										
                                     </div>
                                 </div>
+								
                                 <div class="row">
                                     <div class="col-md-12">
+									
                                         Absent Time: <input type="time" name="absent" class="form-control mt-3 mb-3 " value="<?php echo $row['Absent_time'];?>">
+										
                                     </div>
                                 </div>
+								
                                 <div class="row">
                                     <div class="col-md-12">
+									
                                         <input class="btn btn-primary mt-3 mb-3 bx-pull-right " type="submit" name="update"  value="Update">
+										
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-
-                            </div>
+                            <div class="col-md-3"></div>
                         </div>
                     </form>
-                        <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -172,6 +195,7 @@ require "connect.php";
     <script src="assets/js/index.js"></script>
 
     <script>
+	
         new PerfectScrollbar(".best-product")
         new PerfectScrollbar(".top-sellers-list")
 

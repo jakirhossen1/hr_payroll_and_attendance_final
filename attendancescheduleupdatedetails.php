@@ -1,7 +1,9 @@
 <?php 
-    require 'connect.php';
+
+    echo include("connect.php");
     
     if(isset($_POST['update'])){
+		
         $Id=$_POST['Id'];
         $signin=$_POST['signin'];
         $signout=$_POST['signout'];
@@ -13,6 +15,7 @@
         
         
         header("location:attendanceschedulemanage.php");
+		
     }
     
 
