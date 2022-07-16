@@ -1,8 +1,15 @@
-<?php require "connect.php";
-@session_start();
-if(!isset($_SESSION['userName'])){
-  header("location:Login.php");  
-}
+<?php 
+
+	require "connect.php";
+	
+	@session_start();
+	
+	if(!isset($_SESSION['userName'])){
+		
+		header("location:Login.php"); 
+	  
+	}
+	
 ?>
 
     <nav class="navbar navbar-expand">
@@ -127,26 +134,33 @@ if(!isset($_SESSION['userName'])){
 
 
     <?php 
-      if(isset($_POST['clockind_submit'])){
-           $nam = $_SESSION['user_id'];
-           $today = date("Y-m-d");
-           $In= date("Y-m-d H:i:s");
-           $Out= date("Y-m-d H:i:s");
+	
+		if(isset($_POST['clockind_submit'])){
+			$nam = $_SESSION['user_id'];
+			$today = date("Y-m-d");
+			$In= date("Y-m-d H:i:s");
+			$Out= date("Y-m-d H:i:s");
 
-          $t="SELECT * FROM attendance Where employee_id = '$nam' && attendancedate = '$today'";
-          $result = mysqli_query($conn, $t);
-          $num = mysqli_num_rows($result);
-          if($num==1){
+			$t="SELECT * FROM attendance Where employee_id = '$nam' && attendancedate = '$today'";
+			$result = mysqli_query($conn, $t);
+			$num = mysqli_num_rows($result);
+			
+			if($num==1){
+				
               $sql="UPDATE  `attendance` SET `employee_id` = '$nam',`singOutTime` = '$Out' Where employee_id='$nam' && attendancedate='$today'";
               $q=mysqli_query($conn,$sql);
+			  
               header("Location:dailyAttendance.php");
-          }else{
+			  
+			}else{
+				
               $sql="INSERT INTO `attendance` (`employee_id`, `singInTime`, `lateCountTime`, `attendaneStatus`, `attendancedate`) VALUES ('$nam', '$In' , null ,null, '$today')";
               $q=mysqli_query($conn,$sql);
               
               header("location:dailyAttendance.php");
-          }
-      }
+			  
+			}
+		}	
     
     ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-    echo include("connect.php");
+    include("connect.php");
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
@@ -134,7 +134,7 @@
 											</tr>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 												
 												$n=1;
 												$sql=" SELECT * FROM leaves where leave_status = 'pending' ";
@@ -208,7 +208,7 @@
 											</tr>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 												
 												$n=1;
 												$sql =" SELECT * FROM leaves where leave_status = 'aproved' ";
@@ -293,7 +293,7 @@
 											</tr>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 												
 												$n=1;
 												$sql =" SELECT * FROM leaves where leave_status = 'declined' ";

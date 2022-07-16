@@ -1,6 +1,6 @@
 <?php
 
-    echo include("connect.php");
+    include("connect.php");
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
@@ -129,7 +129,7 @@
 											</tr>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 												$n=1;
 												$sql=" SELECT * FROM payroll where salary_Status = 'pending' ";
 												$querry= mysqli_query($conn, $sql);
@@ -200,7 +200,7 @@
 											</tr>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 											
 												$n=1;
 												$sql =" SELECT * FROM payroll where salary_Status = 'Paid' ";
@@ -276,7 +276,7 @@
 											</tr>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 												
 												$n=1;
 												$sql =" SELECT * FROM payroll where salary_Status = 'declined' ";

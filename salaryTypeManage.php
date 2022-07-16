@@ -1,6 +1,6 @@
 <?php
 
-    echo include("connect.php");
+   include("connect.php");
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
@@ -101,7 +101,8 @@
 									<th>Action</th>
 								</tr>
 								<?php 
-									echo include("connect.php");
+								
+									include("connect.php");
 									
 									$n=1;
 									$sql="SELECT * FROM salary_type";

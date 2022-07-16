@@ -1,12 +1,16 @@
 <?php
+
     require "connect.php";
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
-    if (!isset($_SESSION['userName']))
-    {
-        header("location:Login.php");
+	
+    if (!isset($_SESSION['userName'])){
+		
+		header("location:Login.php");
+		
     }
+	
 ?>
 
 
@@ -46,8 +50,11 @@
 
     <title>HR PAYROLL SOFTWARE</title>
     <style>
+	
         .forms-body {
+			
             margin: 10px;
+			
         }
 
     </style>
@@ -72,8 +79,6 @@
 
         <!--start content-->
         <main class="page-content">
-
-            <!--           Enter Your Code here-->
             <div class="modal-content">
                 <div class="forms-body">
                     <form action="" method="post" enctype="multipart/form-data">
@@ -176,30 +181,68 @@
             </div> -->
 
             <?php 
-            if(isset($_POST['submit'])){
-                 @$nam=$_POST['employee_name'];
-                $today=date("Y-m-d");
-                $In=$_POST['singin'];
-                $Out=$_POST['singin'];
-                $late=$_POST['date'];
-                $t="SELECT * FROM attendance Where employee_id='$nam' && attendancedate='$today'";
-                $result=mysqli_query($conn, $t);
-                $num=mysqli_num_rows($result);
-                if($num==1){
-                    $sql="UPDATE  `attendance` SET `employee_id` = '$nam',`singOutTime` = '$Out' Where employee_id='$nam' && attendancedate='$today'";
-                    $q=mysqli_query($conn,$sql);
-                    echo "<script>alert('Signed Out Successful')</script>";
-                }else{
-                    $sql="INSERT INTO `attendance` (`employee_id`, `singInTime`, `singOutTime`, `lateCountTime`, `attendaneStatus`, `attendancedate`) VALUES ('$nam', '$In', null, '$late',null, '$today')";
-                    $q=mysqli_query($conn,$sql);
-                    echo "<script>alert(' Attendaced Inserted')</script>";
-                }
-            }
+			
+				if(isset($_POST['submit'])){
+					
+					@$nam=$_POST['employee_name'];
+					$today=date("Y-m-d");
+					$In=$_POST['singin'];
+					$Out=$_POST['singin'];
+					$late=$_POST['date'];
+					
+					$t="SELECT * FROM attendance Where employee_id='$nam' && attendancedate='$today'";
+					$result=mysqli_query($conn, $t);
+					$num=mysqli_num_rows($result);
+					
+					if($num==1){
+						
+						$sql="UPDATE  `attendance` SET `employee_id` = '$nam',`singOutTime` = '$Out' Where employee_id='$nam' && attendancedate='$today'";
+						$q=mysqli_query($conn,$sql);
+						echo "<script>alert('Signed Out Successful')</script>";
+						
+					}else{
+						
+						$sql="INSERT INTO `attendance` (`employee_id`, `singInTime`, `singOutTime`, `lateCountTime`, `attendaneStatus`, `attendancedate`) VALUES ('$nam', '$In', null, '$late',null, '$today')";
+						$q=mysqli_query($conn,$sql);
+						echo "<script>alert(' Attendaced Inserted')</script>";
+						
+					}
+				}
             
             ?>
 
 
+			<script>
+			
+				$(document).onload(function(){
 
+				});
+				
+				function dailyAtten() {
+					
+					var dailyAtt = $('#select_employee').val();
+					
+					$.ajax({
+						url: 'getdailyAttendace.php',
+						method: 'POST',
+						dataType: 'html',
+						data: {
+							dailyAtt: dailyAtt
+						},
+						success: function(data) {
+							$('#dataShow').html(data);
+						}
+					})
+				}
+
+				function changeBtn(num){
+					if(num == 1)
+						$(".btn-change").html('<input class="btn btn-primary bx-pull-right mt-3" type="submit" name="submit" value="SignOut">');
+					else
+						$(".btn-change").html('<input class="btn btn-primary bx-pull-right mt-3" type="submit" name="submit" value="SignIn">');
+				}
+
+			</script>
 
         </main>
         <!--end page main-->
@@ -239,38 +282,13 @@
     <script src="assets/js/index.js"></script>
 
     <script>
+	
         new PerfectScrollbar(".best-product")
         new PerfectScrollbar(".top-sellers-list")
 
     </script>
 
-    <script>
-        $(document).onload(function(){
-
-        });
-        function dailyAtten() {
-            var dailyAtt = $('#select_employee').val();
-            $.ajax({
-                url: 'getdailyAttendace.php',
-                method: 'POST',
-                dataType: 'html',
-                data: {
-                    dailyAtt: dailyAtt
-                },
-                success: function(data) {
-                    $('#dataShow').html(data);
-                }
-            })
-        }
-
-        function changeBtn(num){
-            if(num == 1)
-                $(".btn-change").html('<input class="btn btn-primary bx-pull-right mt-3" type="submit" name="submit" value="SignOut">');
-            else
-                $(".btn-change").html('<input class="btn btn-primary bx-pull-right mt-3" type="submit" name="submit" value="SignIn">');
-        }
-
-    </script>
+    
 
 </body>
 

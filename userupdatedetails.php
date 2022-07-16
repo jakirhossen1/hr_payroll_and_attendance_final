@@ -1,7 +1,9 @@
 <?php 
+
     require 'connect.php';
     
     if(isset($_POST['update'])){
+		
         $Id=$_POST['Id'];
         $username=$_POST['username'];
         $roleId=$_POST['roleId'];
@@ -14,7 +16,9 @@
         
         $sql="UPDATE  user_table SET user_name='$username', role_id='$roleId', full_name='$fullname', phone='$phone', email='$email', password='$password', account_creation_date='$date', status='$status'  WHERE user_id='$Id' ";
         $query= mysqli_query($conn, $sql);
+		
         header("location:userManage.php");
+		
     }
 
 

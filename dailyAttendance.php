@@ -1,6 +1,6 @@
 <?php
 
-    echo include("connect.php");
+    require 'connect.php';
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
@@ -98,7 +98,7 @@
 										</tr>
 										<?php
 										  
-											echo include("connect.php");
+											include("connect.php");
 											
 											$n=1;
 											$sql=" SELECT `u`.`full_name` as `username`, `u`.`user_id`, `attendance`.`singInTime`,  `attendance`.`singOutTime`  FROM `user_table` as u RIGHT JOIN `attendance` on `attendance`.`employee_id` = `u`.`user_id`  where `u`.`status` != 'inactive' or `attendance`. `singInTime` ='".date('Y-m-d')."'";

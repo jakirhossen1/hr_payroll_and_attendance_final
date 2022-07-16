@@ -1,5 +1,8 @@
-<?php require "connect.php";
-session_start();
+<?php 
+
+	require "connect.php";
+	session_start();
+	
 ?>
 
 
@@ -36,8 +39,11 @@ session_start();
 
     <title>HR PAYROLL SOFTWARE</title>
     <style>
+	
         .forms-body {
+			
             margin: 10px;
+			
         }
 
     </style>
@@ -50,23 +56,24 @@ session_start();
     <div class="wrapper">
         <!--start top header-->
         <header class="top-header">
-            <?php require "headers.php"?>
+		
+            <?php echo include("headers.php"); ?>
+			
         </header>
         <!--end top header-->
 
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
-            <?php require "SidebarMenu.php"?>
+		
+            <?php echo include("SidebarMenu.php"); ?>
+			
         </aside>
         <!--end sidebar -->
 
         <!--start content-->
         <main class="page-content">
-
-            <!--           Enter Your Code here-->
             <div class="modal-content">
                 <div class="forms-body">
-
                     <div class="row">
                         <div class="col-md-12">
                             <h3 style="margin:10px;">My Profile</h3>
@@ -87,10 +94,12 @@ session_start();
                                 <div class="card-body">
                                     <div class="profile-avatar text-center">
                                         <?php
+										
                                             $user=$_SESSION['userName'];
                                             $sql="SELECT * from employee Where email='$user'";
                                             $query=mysqli_query($conn,$sql);
                                             while($row=mysqli_fetch_array($query)){
+												
                                         ?>
                                         <img src="<?php echo $row['picture'];?>" class="rounded-circle shadow" width="120" height="120" alt="">
                                         

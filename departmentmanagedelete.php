@@ -1,4 +1,5 @@
 <?php
+
     require "connect.php";
     
     $Id=$_GET['aid'];
@@ -11,4 +12,5 @@
     $querys= mysqli_query($conn, $sqls);
 
     header("location:departmentManage.php");
+	
 ?>

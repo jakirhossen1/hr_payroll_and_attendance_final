@@ -1,6 +1,6 @@
 <?php
 
-    echo include("connect.php");
+    include("connect.php");
 
     date_default_timezone_set("Asia/Dhaka");
     @session_start();
@@ -115,7 +115,7 @@
                                         <tbody>
 											<?php
 											
-												echo include("connect.php");
+												include("connect.php");
 											  
 												$n=1;
 												$sql = "SELECT * FROM user_table";

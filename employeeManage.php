@@ -1,9 +1,14 @@
-<?php require "connect.php";
+<?php 
+
+	require "connect.php";
     @session_start();
-    if (!isset($_SESSION['userName']))
-    {
+	
+    if (!isset($_SESSION['userName'])){
+		
         header("location:Login.php");
+		
     }
+	
 ?>
 <!doctype html>
 <html lang="en" class="light-theme">
@@ -38,8 +43,11 @@
 
     <title>HR PAYROLL SOFTWARE</title>
     <style>
+	
         .forms-body {
+			
             margin: 10px;
+			
         }
 
     </style>
@@ -52,26 +60,30 @@
     <div class="wrapper">
         <!--start top header-->
         <header class="top-header">
+		
             <?php echo include("headers.php")?>
+			
         </header>
         <!--end top header-->
 
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
+		
             <?php echo include("SidebarMenu.php")?>
+			
         </aside>
         <!--end sidebar -->
 
         <!--start content-->
         <main class="page-content">
-
-            <!--           Enter Your Code here-->
             <div class="modal-content">
                 <div class="forms-body">
 
                     <div class="row">
                         <div class="col-md-12">
+						
                             <h3 style="margin:10px;">Manage Employee</h3>
+							
                         </div>
                     </div>
                     <hr>
@@ -103,17 +115,15 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                $sl=1;
-          $sql="SELECT * From employee";
-          
-          $query=mysqli_query($conn,$sql);
-         
-          
-          while($row=mysqli_fetch_array($query)){
-              
+										
+											$sl=1;
+											$sql="SELECT * From employee";
+											$query=mysqli_query($conn,$sql);
+											
+											while($row=mysqli_fetch_array($query)){
+										  
 
-
-                ?>
+										?>
 
                                         <tr>
                                             <td><?php echo $sl++;?></td>
@@ -132,29 +142,12 @@
 
                                         <?php } ?>
                                     </tbody>
-
-
-
-
-
-
-
-
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
 
         </main>
         <!--end page main-->
@@ -192,6 +185,7 @@
     <script src="assets/js/index.js"></script>
 
     <script>
+	
         new PerfectScrollbar(".best-product")
         new PerfectScrollbar(".top-sellers-list")
 
