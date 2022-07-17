@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/lib/codemirror.css?v=5.1.3">
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/addon/hint/show-hint.css?v=5.1.3">
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/addon/lint/lint.css?v=5.1.3">
-    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/theme.css?v=5.1.3&nocache=2959982688ltr&server=1">
+    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/theme.css?v=5.1.3&nocache=2727122691ltr&server=1">
     <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/printview.css?v=5.1.3" media="print" id="printcss">
     <title>localhost / 127.0.0.1 | phpMyAdmin 5.1.3</title>
     <script data-cfasync="false" type="text/javascript" src="js/vendor/jquery/jquery.min.js?v=5.1.3"></script>
@@ -56,7 +56,7 @@
 
 <script data-cfasync="false" type="text/javascript">
 // <![CDATA[
-CommonParams.setAll({common_query:"",opendb_url:"index.php?route=/database/structure",lang:"en",server:"1",table:"",db:"",token:"37756128725a53223356365a78424827",text_dir:"ltr",show_databases_navigation_as_tree:true,pma_text_default_tab:"Browse",pma_text_left_default_tab:"Structure",pma_text_left_default_tab2:false,LimitChars:"50",pftext:"",confirm:true,LoginCookieValidity:"1440",session_gc_maxlifetime:"1440",logged_in:true,is_https:false,rootPath:"/phpmyadmin/",arg_separator:"&",PMA_VERSION:"5.1.3",auth_type:"config",user:"root"});
+CommonParams.setAll({common_query:"",opendb_url:"index.php?route=/database/structure",lang:"en",server:"1",table:"",db:"",token:"7632744d4b514c5b6554796f6e67795d",text_dir:"ltr",show_databases_navigation_as_tree:true,pma_text_default_tab:"Browse",pma_text_left_default_tab:"Structure",pma_text_left_default_tab2:false,LimitChars:"50",pftext:"",confirm:true,LoginCookieValidity:"1440",session_gc_maxlifetime:"1440",logged_in:true,is_https:false,rootPath:"/phpmyadmin/",arg_separator:"&",PMA_VERSION:"5.1.3",auth_type:"config",user:"root"});
 var firstDayOfCalendar = '0';
 var themeImagePath = '.\/themes\/pmahomme\/img\/';
 var mysqlDocTemplate = '.\/url.php\u003Furl\u003Dhttps\u00253A\u00252F\u00252Fdev.mysql.com\u00252Fdoc\u00252Frefman\u00252F8.0\u00252Fen\u00252F\u002525s.html';
@@ -260,7 +260,7 @@ $(function() {
       </div>
       <div id="pma_navigation_tree" class="list_container synced highlight autoexpand">
 
-  <div class="pma_quick_warp"><div class="drop_list"><button title="Recent tables" class="drop_button btn">Recent</button><ul id="pma_recent_list"><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=claims">`hrpayroll`.`claims`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=bank">`hrpayroll`.`bank`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=addition">`hrpayroll`.`addition`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=asset">`hrpayroll`.`asset`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=expense_list">`hrpayroll`.`expense_list`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=user_role">`hrpayroll`.`user_role`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=designation">`hrpayroll`.`designation`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=department">`hrpayroll`.`department`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=award_list">`hrpayroll`.`award_list`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=employee_document">`hrpayroll`.`employee_document`</a></li></ul></div><div class="drop_list"><button title="Favorite tables" class="drop_button btn">Favorites</button><ul id="pma_favorite_list"><li class="warp_link">There are no favorite tables.</li></ul></div><div class="clearfloat"></div></div>
+  <div class="pma_quick_warp"><div class="drop_list"><button title="Recent tables" class="drop_button btn">Recent</button><ul id="pma_recent_list"><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=attendance_schedule">`hrpayroll`.`attendance_schedule`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=attendance">`hrpayroll`.`attendance`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=payroll">`hrpayroll`.`payroll`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=employee">`hrpayroll`.`employee`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=user_table">`hrpayroll`.`user_table`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=user_role">`hrpayroll`.`user_role`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=salary">`hrpayroll`.`salary`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=salary_setup">`hrpayroll`.`salary_setup`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=salary_type">`hrpayroll`.`salary_type`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=hrpayroll&table=leave_type">`hrpayroll`.`leave_type`</a></li></ul></div><div class="drop_list"><button title="Favorite tables" class="drop_button btn">Favorites</button><ul id="pma_favorite_list"><li class="warp_link">There are no favorite tables.</li></ul></div><div class="clearfloat"></div></div>
 
 <div class="clearfloat"></div>
 
@@ -284,7 +284,7 @@ $(function() {
                   <div id="pma_navigation_settings"><div class="page_settings"><form method="post" action="index.php&#x3F;route&#x3D;&#x25;2Fexport&amp;server&#x3D;1" class="config-form disableAjax">
   <input type="hidden" name="tab_hash" value="">
       <input type="hidden" name="check_page_refresh" id="check_page_refresh" value="">
-    <input type="hidden" name="token" value="37756128725a53223356365a78424827">
+    <input type="hidden" name="token" value="7632744d4b514c5b6554796f6e67795d">
   <input type="hidden" name="submit_save" value="Navi">
 <ul class="tabs responsivetable row">
       <li><a href="#Navi_panel">Navigation panel</a></li>
