@@ -1,18 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-<?php 
-
-	echo include("connect.php");
-
-	date_default_timezone_set("Asia/Dhaka");
-	session_start();
-	
-	if(!isset($_SESSION['userName'])){
-		header("location:Login.php");  
-	}
-
-?>
-
 <script type="text/javascript">
     function CheckEmail(){
         var UserEmail = $("#useremail").val();
@@ -41,73 +28,7 @@
 </script>
 
 
-<!doctype html>
-<html lang="en" class="light-theme">
-
-<head>
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
-    <!--plugins-->
-    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <!-- Bootstrap CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link href="assets/css/icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
-    <!-- loader-->
-    <link href="assets/css/pace.min.css" rel="stylesheet" />
-
-    <!--Theme Styles-->
-    <link href="assets/css/dark-theme.css" rel="stylesheet" />
-    <link href="assets/css/light-theme.css" rel="stylesheet" />
-    <link href="assets/css/semi-dark.css" rel="stylesheet" />
-    <link href="assets/css/header-colors.css" rel="stylesheet" />
-
-    <title>HR PAYROLL SOFTWARE</title>
-
-    <style>
-	
-        .forms-body {
-            margin: 10px;
-
-        }
-    
-    </style>
-</head>
-
-<body>
-
-
-    <!--start wrapper-->
-    <div class="wrapper">
-        <!--start top header-->
-        <header class="top-header">
-		
-            <?php echo include("headers.php"); ?>
-			
-        </header>
-        <!--end top header-->
-
-        <!--start sidebar -->
-        <aside class="sidebar-wrapper" data-simplebar="true">
-		
-            <?php echo include("SidebarMenu.php"); ?>
-			
-        </aside>
-        <!--end sidebar -->
-
-        <!--start content-->
-        <main class="page-content">
+<?php include("Topbar.php");?>
 
             <?php
 			
@@ -515,530 +436,482 @@
 
                 </form>
             </div>
-            
-   
-        </main>
-        <!--end page main-->
-
-        <!--start overlay-->
-        <div class="overlay nav-toggle-icon"></div>
-        <!--end overlay-->
-
-        <!--Start Back To Top Button-->
-        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-        <!--End Back To Top Button-->
-
-    </div>
-    <!--end wrapper-->
 	
-	<script>
-        $(function(){
-            $(".datepickers").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                 yearRange: "1900:2050",
-                dateFormat: 'yy-mm-dd'
+			<script>
+				$(function(){
+					$(".datepickers").datepicker({
+						changeMonth: true,
+						changeYear: true,
+						 yearRange: "1900:2050",
+						dateFormat: 'yy-mm-dd'
 
-            });
-        });
-        
+					});
+				});
+				
 
-    </script>
-    <script type="text/JavaScript">
-	
-		$("#myform").submit(function(){
+			</script>
+			<script type="text/JavaScript">
 			
-            var Employ_name= $("#employ_name").val();
-            var Gen= $("#gen").val();
-            var Marital_status= $("#marital_status").val();
-            var Employ_date_of_birth= $("#employ_date_of_birth").val();
-            var Employmet_picture= $("#employmet_picture").val();
-            var Employ_religion= $("#employ_religion").val();
-            var Employ_district= $("#employ_district").val();
-            var Employ_countris= $("#employ_countris").val();
-            var Phone= $("#phone").val();
-            var Employ_postal_code= $("#employ_postal_code").val();
-            var Employ_nationality= $("#employ_nationality").val();
-            var Present_address= $("#present_address").val();
-            var Permanent_address= $("#permanent_address").val();
-            var Employ_nid= $("#employ_nid").val();
-            //var employee_status= $("#employee_status").val();
-            var Email= $(".email").val();
-            var Employeepass= $("#employeepass").val();
-            var Employment_id= $("#employment_id").val();
-            var Department_id= $("#department_id").val();
-            var Designation= $("#designation").val();
-            var Appointment_date= $("#appointment_date").val();
-            var Joining_date= $("#joining_date").val();
-            //var created_by= $("#created_by").val();
-            
-            
-            if(Employ_name==""){
-				
-                $("#employ_name").attr("style","border: 3px solid red");
-                $("#erremploy_name").css("color","red");
-                $("#erremploy_name").html("Please select your Employee name");
-                return false;
-				
-            }else{
-				
-                $("#employ_name").attr("style","border:");
-                $("#erremploy_name").html("");
-				
-            }
-			
-			
-			if(Gen==""){
-				
-                $("#gen").attr("style","border: 3px solid red");
-                $("#errgen").css("color","red");
-                $("#errgen").html("Please select your gender");
-                return false;
-				
-            }else{
-				
-				$("#gen").attr("style","border:");
-				$("#errgen").html("");
-				
-			}
-			
-			
-			if(Marital_status==""){
-			  
-                $("#marital_status").attr("style","border: 3px solid red");
-                $("#errmarital_status").css("color","red");
-                $("#errmarital_status").html("Please select your marital status");
-                return false;
-				
-            }else{
-				
-                $("#marital_status").attr("style","border:");
-                $("#errmarital_status").html("");
-				
-            }
-			
-			
-            if(Employ_date_of_birth==""){
-				
-                $("#employ_date_of_birth").attr("style","border: 3px solid red");
-                $("#erremploy_date_of_birth").css("color","red");
-                $("#erremploy_date_of_birth").html("Please select your date of birth");
-                return false;
-				
-            }else{
-				
-                $("#employ_date_of_birth").attr("style","border:");
-                $("#erremploy_date_of_birth").html("");
-				
-            }
-			
-			
-			if(Employmet_picture==""){
-				
-                $("#employmet_picture").attr("style","border: 3px solid red");
-                $("#erremploymet_picture").css("color","red");
-                $("#erremploymet_picture").html("Please upload your picture");
-                return false;
-				
-            }else{
-				
-				$("#employmet_picture").attr("style","border:");
-				$("#erremploymet_picture").html("");
-			   
-			}
-			
-			
-			if(Employ_religion==""){
-				
-                $("#employ_religion").attr("style","border: 3px solid red");
-                $("#erremploy_religion").css("color","red");
-                $("#erremploy_religion").html("Please write your religion");
-                return false;
-				
-            }else{
-				
-                $("#employ_religion").attr("style","border:");
-                $("#erremploy_religion").html("");
-				
-            }
-			
-			
-			if(Employ_district==""){
-				
-                $("#employ_district").attr("style","border: 3px solid red");
-                $("#erremploy_district").css("color","red");
-                $("#erremploy_district").html("Please select your district");
-                return false;
-				
-            }else{
-				
-				$("#employ_district").attr("style","border:");
-				$("#erremploy_district").html("");
-			   
-			}
-			
-			
-			if(Employ_countris==""){
-				
-                $("#employ_countris").attr("style","border: 3px solid red");
-                $("#erremploy_countris").css("color","red");
-                $("#erremploy_countris").html("Please select your country name");
-                return false;
-				
-            }else{
-				
-                $("#employ_countris").attr("style","border:");
-                $("#erremploy_countris").html("");
-				
-            }
-			
-			
-			if(Phone==""){
-				
-                $("#phone").attr("style","border: 3px solid red");
-                $("#errphone").css("color","red");
-                $("#errphone").html("Please enter your phone number");
-                return false;
-				
-            }else{
-				
-				$("#phone").attr("style","border:");
-				$("#errphone").html("");
-			   
-			}
-           
-		   
-			if(Employ_postal_code==""){
-				
-                $("#employ_postal_code").attr("style","border: 3px solid red");
-                $("#erremploy_postal_code").css("color","red");
-                $("#erremploy_postal_code").html("Please enter postal code");
-                return false;
-				
-            }else{
-				
-                $("#employ_postal_code").attr("style","border:");
-                $("#erremploy_postal_code").html("");
-				
-            }
-			
-			
-			if(Employ_nationality==""){
-				
-                $("#employ_nationality").attr("style","border: 3px solid red");
-                $("#erremploy_nationality").css("color","red");
-                $("#erremploy_nationality").html("Please select enter your nationality");
-                return false;
-				
-            }else{
-				
-				$("#employ_nationality").attr("style","border:");
-				$("#erremploy_nationality").html("");
-			   
-			}
-			
-			
-			if(Present_address==""){
-				
-                $("#present_address").attr("style","border: 3px solid red");
-                $("#errpresent_address").css("color","red");
-                $("#errpresent_address").html("Please enter your present address");
-                return false;
-				
-            }else{
-				
-                $("#present_address").attr("style","border:");
-                $("#errpresent_address").html("");
-				
-            }
-			
-			
-            if(Permanent_address==""){
-				
-                $("#permanent_address").attr("style","border: 3px solid red");
-                $("#errpermanent_address").css("color","red");
-                $("#errpermanent_address").html("Please enter your permanent address");
-                return false;
-				
-            }else{
-				
-                $("#permanent_address").attr("style","border:");
-                $("#errpermanent_address").html("");
-				
-            }
-			
-			
-			if(Employ_nid==""){
-				
-                $("#employ_nid").attr("style","border: 3px solid red");
-                $("#erremploy_nid").css("color","red");
-                $("#erremploy_nid").html("Please enter your nid number");
-                return false;
-				
-            }else{
-				
-				$("#employ_nid").attr("style","border:");
-				$("#erremploy_nid").html("");
-			   
-			}
-			
-			
-			// if(employee_status==""){
-          //       $("#employee_status").attr("style","border: 3px solid red");
-          //       $("#erremployee_status").css("color","red");
-          //       $("#erremployee_status").html("Please select your employee status");
-          //       return false;
-          //   }
-            //else{
-               // $("#employee_status").attr("style","border:");
-                //$("#erremployee_status").html("");
-            //}
-			
-			
-          if(Email==""){
-			  
-                $(".email").attr("style","border: 3px solid red");
-                $("#erruseremail").css("color","red");
-                $("#erruseremail").html("Please enter your email address");
-                return false;
-				
-            }else{
-				
-				$(".email").attr("style","border:");
-				$("#erruseremail").html("");
-			   
-			}
-			
-			
-			if(Employeepass==""){
-				
-                $("#employeepass").attr("style","border: 3px solid red");
-                $("#erremployeepass").css("color","red");
-                $("#erremployeepass").html("Please enter your password");
-                return false;
-				
-            }else{
-				
-				$("#employeepass").attr("style","border:");
-				$("#erremployeepass").html("");
-				
-			}
-			
-			
-			if(Employment_id==""){
-				
-                $("#employment_id").attr("style","border: 3px solid red");
-                $("#erremployment_id").css("color","red");
-                $("#erremployment_id").html("Please select employee");
-                return false;
-				
-            }else{
-				
-                $("#employment_id").attr("style","border:");
-                $("#erremployment_id").html("");
-				
-            }
-			
-			
-			if(Department_id==""){
-				
-                $("#department_id").attr("style","border: 3px solid red");
-                $("#errdepartment_id").css("color","red");
-                $("#errdepartment_id").html("Please select your department");
-                return false;
-				
-            }else{
-				
-				$("#department_id").attr("style","border:");
-				$("#errdepartment_id").html("");
-			   
-			}
-           
-		   
-			if(Designation==""){
-				
-                $("#designation").attr("style","border: 3px solid red");
-                $("#errdesignation").css("color","red");
-                $("#errdesignation").html("Please select your designation");
-                return false;
-				
-            }else{
-				
-                $("#designation").attr("style","border:");
-                $("#errdesignation").html("");
-				
-            }
-			
-			
-			if(Appointment_date==""){
-				
-                $("#appointment_date").attr("style","border: 3px solid red");
-                $("#errappointment_date").css("color","red");
-                $("#errappointment_date").html("Please select your appointment date");
-                return false;
-				
-            }else{
-				
-				$("#appointment_date").attr("style","border:");
-				$("#errappointment_date").html("");
-			   
-			}
-			
-			
-			if(Joining_date==""){
-				
-                $("#joining_date").attr("style","border: 3px solid red");
-                $("#errjoining_date").css("color","red");
-                $("#errjoining_date").html("Please select your joining date");
-                return false;
-				
-            }else{
-				
-                $("#joining_date").attr("style","border:");
-                $("#errjoining_date").html("");
-				
-            }
-			
-			
-            // if(created_by==""){
-            //     $("#created_by").attr("style","border: 3px solid red");
-            //     $("#errcreated_by").css("color","red");
-            //     $("#errcreated_by").html("Please select your employee status");
-            //     return false;
-            // }else{
-            //     $("#created_by").attr("style","border:");
-            //     $("#errcreated_by").html("");
-            // }
-           
-        });
-        
-        function change(id,msg,type=null){
-			
-            var get=$("#"+id).val();
-            
-            if(type==null){
-				
-                if(get==""){
+				$("#myform").submit(function(){
 					
-					$("#"+id).attr("style","border: 3px solid red");
-					$("#"+msg).css("color","red");
-					$("#"+msg).html("This field must not be empty!");
+					var Employ_name= $("#employ_name").val();
+					var Gen= $("#gen").val();
+					var Marital_status= $("#marital_status").val();
+					var Employ_date_of_birth= $("#employ_date_of_birth").val();
+					var Employmet_picture= $("#employmet_picture").val();
+					var Employ_religion= $("#employ_religion").val();
+					var Employ_district= $("#employ_district").val();
+					var Employ_countris= $("#employ_countris").val();
+					var Phone= $("#phone").val();
+					var Employ_postal_code= $("#employ_postal_code").val();
+					var Employ_nationality= $("#employ_nationality").val();
+					var Present_address= $("#present_address").val();
+					var Permanent_address= $("#permanent_address").val();
+					var Employ_nid= $("#employ_nid").val();
+					//var employee_status= $("#employee_status").val();
+					var Email= $(".email").val();
+					var Employeepass= $("#employeepass").val();
+					var Employment_id= $("#employment_id").val();
+					var Department_id= $("#department_id").val();
+					var Designation= $("#designation").val();
+					var Appointment_date= $("#appointment_date").val();
+					var Joining_date= $("#joining_date").val();
+					//var created_by= $("#created_by").val();
 					
-				}else{
 					
-					$("#"+id).attr("style","border:");
-					$("#"+msg).html("");
+					if(Employ_name==""){
+						
+						$("#employ_name").attr("style","border: 3px solid red");
+						$("#erremploy_name").css("color","red");
+						$("#erremploy_name").html("Please select your Employee name");
+						return false;
+						
+					}else{
+						
+						$("#employ_name").attr("style","border:");
+						$("#erremploy_name").html("");
+						
+					}
 					
+					
+					if(Gen==""){
+						
+						$("#gen").attr("style","border: 3px solid red");
+						$("#errgen").css("color","red");
+						$("#errgen").html("Please select your gender");
+						return false;
+						
+					}else{
+						
+						$("#gen").attr("style","border:");
+						$("#errgen").html("");
+						
+					}
+					
+					
+					if(Marital_status==""){
+					  
+						$("#marital_status").attr("style","border: 3px solid red");
+						$("#errmarital_status").css("color","red");
+						$("#errmarital_status").html("Please select your marital status");
+						return false;
+						
+					}else{
+						
+						$("#marital_status").attr("style","border:");
+						$("#errmarital_status").html("");
+						
+					}
+					
+					
+					if(Employ_date_of_birth==""){
+						
+						$("#employ_date_of_birth").attr("style","border: 3px solid red");
+						$("#erremploy_date_of_birth").css("color","red");
+						$("#erremploy_date_of_birth").html("Please select your date of birth");
+						return false;
+						
+					}else{
+						
+						$("#employ_date_of_birth").attr("style","border:");
+						$("#erremploy_date_of_birth").html("");
+						
+					}
+					
+					
+					if(Employmet_picture==""){
+						
+						$("#employmet_picture").attr("style","border: 3px solid red");
+						$("#erremploymet_picture").css("color","red");
+						$("#erremploymet_picture").html("Please upload your picture");
+						return false;
+						
+					}else{
+						
+						$("#employmet_picture").attr("style","border:");
+						$("#erremploymet_picture").html("");
+					   
+					}
+					
+					
+					if(Employ_religion==""){
+						
+						$("#employ_religion").attr("style","border: 3px solid red");
+						$("#erremploy_religion").css("color","red");
+						$("#erremploy_religion").html("Please write your religion");
+						return false;
+						
+					}else{
+						
+						$("#employ_religion").attr("style","border:");
+						$("#erremploy_religion").html("");
+						
+					}
+					
+					
+					if(Employ_district==""){
+						
+						$("#employ_district").attr("style","border: 3px solid red");
+						$("#erremploy_district").css("color","red");
+						$("#erremploy_district").html("Please select your district");
+						return false;
+						
+					}else{
+						
+						$("#employ_district").attr("style","border:");
+						$("#erremploy_district").html("");
+					   
+					}
+					
+					
+					if(Employ_countris==""){
+						
+						$("#employ_countris").attr("style","border: 3px solid red");
+						$("#erremploy_countris").css("color","red");
+						$("#erremploy_countris").html("Please select your country name");
+						return false;
+						
+					}else{
+						
+						$("#employ_countris").attr("style","border:");
+						$("#erremploy_countris").html("");
+						
+					}
+					
+					
+					if(Phone==""){
+						
+						$("#phone").attr("style","border: 3px solid red");
+						$("#errphone").css("color","red");
+						$("#errphone").html("Please enter your phone number");
+						return false;
+						
+					}else{
+						
+						$("#phone").attr("style","border:");
+						$("#errphone").html("");
+					   
+					}
+				   
+				   
+					if(Employ_postal_code==""){
+						
+						$("#employ_postal_code").attr("style","border: 3px solid red");
+						$("#erremploy_postal_code").css("color","red");
+						$("#erremploy_postal_code").html("Please enter postal code");
+						return false;
+						
+					}else{
+						
+						$("#employ_postal_code").attr("style","border:");
+						$("#erremploy_postal_code").html("");
+						
+					}
+					
+					
+					if(Employ_nationality==""){
+						
+						$("#employ_nationality").attr("style","border: 3px solid red");
+						$("#erremploy_nationality").css("color","red");
+						$("#erremploy_nationality").html("Please select enter your nationality");
+						return false;
+						
+					}else{
+						
+						$("#employ_nationality").attr("style","border:");
+						$("#erremploy_nationality").html("");
+					   
+					}
+					
+					
+					if(Present_address==""){
+						
+						$("#present_address").attr("style","border: 3px solid red");
+						$("#errpresent_address").css("color","red");
+						$("#errpresent_address").html("Please enter your present address");
+						return false;
+						
+					}else{
+						
+						$("#present_address").attr("style","border:");
+						$("#errpresent_address").html("");
+						
+					}
+					
+					
+					if(Permanent_address==""){
+						
+						$("#permanent_address").attr("style","border: 3px solid red");
+						$("#errpermanent_address").css("color","red");
+						$("#errpermanent_address").html("Please enter your permanent address");
+						return false;
+						
+					}else{
+						
+						$("#permanent_address").attr("style","border:");
+						$("#errpermanent_address").html("");
+						
+					}
+					
+					
+					if(Employ_nid==""){
+						
+						$("#employ_nid").attr("style","border: 3px solid red");
+						$("#erremploy_nid").css("color","red");
+						$("#erremploy_nid").html("Please enter your nid number");
+						return false;
+						
+					}else{
+						
+						$("#employ_nid").attr("style","border:");
+						$("#erremploy_nid").html("");
+					   
+					}
+					
+					
+					// if(employee_status==""){
+				  //       $("#employee_status").attr("style","border: 3px solid red");
+				  //       $("#erremployee_status").css("color","red");
+				  //       $("#erremployee_status").html("Please select your employee status");
+				  //       return false;
+				  //   }
+					//else{
+					   // $("#employee_status").attr("style","border:");
+						//$("#erremployee_status").html("");
+					//}
+					
+					
+				  if(Email==""){
+					  
+						$(".email").attr("style","border: 3px solid red");
+						$("#erruseremail").css("color","red");
+						$("#erruseremail").html("Please enter your email address");
+						return false;
+						
+					}else{
+						
+						$(".email").attr("style","border:");
+						$("#erruseremail").html("");
+					   
+					}
+					
+					
+					if(Employeepass==""){
+						
+						$("#employeepass").attr("style","border: 3px solid red");
+						$("#erremployeepass").css("color","red");
+						$("#erremployeepass").html("Please enter your password");
+						return false;
+						
+					}else{
+						
+						$("#employeepass").attr("style","border:");
+						$("#erremployeepass").html("");
+						
+					}
+					
+					
+					if(Employment_id==""){
+						
+						$("#employment_id").attr("style","border: 3px solid red");
+						$("#erremployment_id").css("color","red");
+						$("#erremployment_id").html("Please select employee");
+						return false;
+						
+					}else{
+						
+						$("#employment_id").attr("style","border:");
+						$("#erremployment_id").html("");
+						
+					}
+					
+					
+					if(Department_id==""){
+						
+						$("#department_id").attr("style","border: 3px solid red");
+						$("#errdepartment_id").css("color","red");
+						$("#errdepartment_id").html("Please select your department");
+						return false;
+						
+					}else{
+						
+						$("#department_id").attr("style","border:");
+						$("#errdepartment_id").html("");
+					   
+					}
+				   
+				   
+					if(Designation==""){
+						
+						$("#designation").attr("style","border: 3px solid red");
+						$("#errdesignation").css("color","red");
+						$("#errdesignation").html("Please select your designation");
+						return false;
+						
+					}else{
+						
+						$("#designation").attr("style","border:");
+						$("#errdesignation").html("");
+						
+					}
+					
+					
+					if(Appointment_date==""){
+						
+						$("#appointment_date").attr("style","border: 3px solid red");
+						$("#errappointment_date").css("color","red");
+						$("#errappointment_date").html("Please select your appointment date");
+						return false;
+						
+					}else{
+						
+						$("#appointment_date").attr("style","border:");
+						$("#errappointment_date").html("");
+					   
+					}
+					
+					
+					if(Joining_date==""){
+						
+						$("#joining_date").attr("style","border: 3px solid red");
+						$("#errjoining_date").css("color","red");
+						$("#errjoining_date").html("Please select your joining date");
+						return false;
+						
+					}else{
+						
+						$("#joining_date").attr("style","border:");
+						$("#errjoining_date").html("");
+						
+					}
+					
+					
+					// if(created_by==""){
+					//     $("#created_by").attr("style","border: 3px solid red");
+					//     $("#errcreated_by").css("color","red");
+					//     $("#errcreated_by").html("Please select your employee status");
+					//     return false;
+					// }else{
+					//     $("#created_by").attr("style","border:");
+					//     $("#errcreated_by").html("");
+					// }
+				   
+				});
+				
+				function change(id,msg,type=null){
+					
+					var get=$("#"+id).val();
+					
+					if(type==null){
+						
+						if(get==""){
+							
+							$("#"+id).attr("style","border: 3px solid red");
+							$("#"+msg).css("color","red");
+							$("#"+msg).html("This field must not be empty!");
+							
+						}else{
+							
+							$("#"+id).attr("style","border:");
+							$("#"+msg).html("");
+							
+						}
+					
+					}
+					
+					
+					if(type=="mobile"){
+						
+						if(get==""){
+							
+							$("#"+id).attr("style","border: 3px solid red");
+							$("#"+msg).css("color","red");
+							$("#"+msg).html("This field must not be empty!");
+							
+						}else if(get.length!==11){
+							
+							$("#"+id).attr("style","border: 3px solid red");
+							$("#"+msg).css("color","red");
+							$("#"+msg).html("Mobile number must be 11 digit");
+							
+						}else{
+							
+							$("#"+id).attr("style","border:");
+							$("#"+msg).html("");
+							
+						}
+					
+					}
+					
+					
+					if(type=="data"){
+						
+						if(get==""){
+							
+							$("#"+id).attr("style","border: 3px solid red");
+							 $("#"+msg).css("color","red");
+							$("#"+msg).html("Please select any option");
+							
+						}else{
+							
+							$("#"+id).attr("style","border:");
+							$("#"+msg).html("");
+							
+						}
+					
+					}
+				 
 				}
-            
-            }
-			
-			
-            if(type=="mobile"){
 				
-                if(get==""){
-					
-					$("#"+id).attr("style","border: 3px solid red");
-					$("#"+msg).css("color","red");
-					$("#"+msg).html("This field must not be empty!");
-					
-				}else if(get.length!==11){
-					
-					$("#"+id).attr("style","border: 3px solid red");
-					$("#"+msg).css("color","red");
-					$("#"+msg).html("Mobile number must be 11 digit");
-					
-				}else{
-					
-					$("#"+id).attr("style","border:");
-					$("#"+msg).html("");
-					
-				}
-            
-            }
-			
-			
-			if(type=="data"){
+			</script> 
+
+			<script>
+
+				$(document).ready(function(){
+					$('#distc').autocomplete({
+						source:'get_distric.php',
+						minLength:1,
+						delay:500
+					})
+				})
 				
-                if(get==""){
-					
-					$("#"+id).attr("style","border: 3px solid red");
-					 $("#"+msg).css("color","red");
-					$("#"+msg).html("Please select any option");
-					
-				}else{
-					
-					$("#"+id).attr("style","border:");
-					$("#"+msg).html("");
-					
-				}
-            
-            }
-         
-        }
-        
-    </script> 
-
-	<script>
-
-		$(document).ready(function(){
-			$('#distc').autocomplete({
-				source:'get_distric.php',
-				minLength:1,
-				delay:500
-			})
-		})
-		
-		
-		
-	</script> 
-    
-    <script>
-	
-		$(document).ready(function(){
-			$('.coun').autocomplete({
-				source:'getCountry.php',
-				minLength:1,
-				delay:500
-			})
-		})
-    
-    
-    
-    </script> 
+				
+				
+			</script> 
+			
+			<script>
+			
+				$(document).ready(function(){
+					$('.coun').autocomplete({
+						source:'getCountry.php',
+						minLength:1,
+						delay:500
+					})
+				})
+			
+			
+			
+			</script> 
 
 
-    <!-- Bootstrap bundle JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!--plugins-->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="assets/plugins/easyPieChart/jquery.easypiechart.js"></script>
-    <script src="assets/plugins/peity/jquery.peity.min.js"></script>
-    <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="assets/js/pace.min.js"></script>
-    <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <!--app-->
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/index.js"></script>
-
-    <script>
-	
-        new PerfectScrollbar(".best-product")
-        new PerfectScrollbar(".top-sellers-list")
-
-    </script>
-
-    
-
-
-</body>
-
-</html>
+<?php include("Footer.php");?>    

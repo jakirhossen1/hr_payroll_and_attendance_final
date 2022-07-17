@@ -1,4 +1,4 @@
- </main>
+		</main>
         <!--end page main-->
 
         <!--start overlay-->
@@ -11,7 +11,7 @@
 
     </div>
     <!--end wrapper-->
-
+	
 
     <!-- Bootstrap bundle JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -38,7 +38,18 @@
         new PerfectScrollbar(".top-sellers-list")
 
     </script>
+	
 
 </body>
 
 </html>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: #ffffff">
+	Copyright@2022 --||-- Mother's Dreams Creative IT --||-- All Rights Reserved
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
