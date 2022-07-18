@@ -57,14 +57,13 @@
 							if(! $row2):
 						?>
 						<button type="submit" class="btn btn-primary" name="clockind_submit">Clock Out</button>
-					</li>
 						<?php endif ?>
 						<?php else:?>
-						<button type="submit" class="btn btn-primary" name="clockind_submit">Clock In</button></li>
+						<button type="submit" class="btn btn-primary" name="clockind_submit">Clock In</button>
 						<?php endif ?>
-
 						</form>
-						
+					</li>	
+					
 					<li class="nav-item dropdown dropdown-large">
 						<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
 							<div class="user-setting d-flex align-items-center gap-1">
