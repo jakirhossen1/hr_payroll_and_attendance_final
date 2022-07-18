@@ -28,7 +28,88 @@
 </script>
 
 
-<?php include("Topbar.php");?>
+<?php
+
+	include ("connect.php");
+	date_default_timezone_set("Asia/Dhaka");
+	session_start();
+	
+	if(!isset($_SESSION['userName'])){
+		
+	  header("location:Login.php");  
+	  
+	}
+	
+?>
+
+<!doctype html>
+<html lang="en" class="light-theme">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+    <!--plugins-->
+    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">-->
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet" />
+
+    <!--Theme Styles-->
+    <link href="assets/css/dark-theme.css" rel="stylesheet" />
+    <link href="assets/css/light-theme.css" rel="stylesheet" />
+    <link href="assets/css/semi-dark.css" rel="stylesheet" />
+    <link href="assets/css/header-colors.css" rel="stylesheet" />
+
+    <title>HR PAYROLL SOFTWARE</title>
+
+    <style>
+
+        .forms-body {
+
+            margin: 10px;
+            
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+	<!--start wrapper-->
+	<div class="wrapper">
+		<!--start top header-->
+		<header class="top-header">  
+		
+			<?php include("headers.php");?>
+			
+		</header>
+		<!--end top header-->
+
+        <!--start sidebar -->
+        <aside class="sidebar-wrapper" data-simplebar="true">
+		
+			<?php include("SidebarMenu.php");?>
+			
+		</aside>
+		<!--end sidebar -->
+
+		<!--start content-->
+        <main class="page-content">
 
             <?php
 			
@@ -118,8 +199,8 @@
 							
                             if ($num == 0){
                                 
-                                $sqls = "INSERT INTO `user_table` ( `user_name`, `full_name`, `email`, `phone`, `password`, `role_id`, `account_creation_date`, `status`, `created_by`) VALUES ('$fullname', '$fullname', '$email', '$phone', '$Emppass', '4', '$today', '$status','$Created_by')";
-                                $user_id = "SELECT `user_id` FROM employee WHERE email='$email'";
+                                $sqls = "INSERT INTO `user_table` ( `user_name`, `full_name`, `email`, `phone`, `password`, `role_id`, `account_creation_date`, `status`, `created_by`) VALUES ('$username', '$fullname', '$email', '$phone', '$Emppass', '4', '$today', '$status','$Created_by')";
+                                //$user_id = "SELECT `user_id` FROM employee WHERE email='$email'";
                                 $query = mysqli_query($conn, $sqls);
 								
                                 if ($query){
@@ -134,7 +215,7 @@
 										
                                     } else{
 										
-                                        $sql = "INSERT INTO `employee` (`employee_type_id`,`department_id`,`designation_id`,`user_id`,`employee_name`, `appointment_date`, `date_of_birth`, `employee_code`, `email`, `joining_date`, `employee_status`, `religion`, `nationality`, `district`, `Countries`, `postal_code`, `Passport_or_NID`, `gender`, `maritial_Status`, `present_address`,`permanent_address`,`picture`,`created_by`,`phone`,`password`) VALUES ( '$EmptypeId', '$deptId','$designationId','$user_id','$fullname', '$appointdate', '$DOB', '$Empcode', '$email', '$joindate', '$status', '$religion', '$nationality', '$distic', '$country', '$postCode', '$passNid', '$gender', '$marital_status', '$preaddress', '$peraddress', '$path','$Created_by','$phone','$Emppass')";
+                                        $sql = "INSERT INTO `employee` (`employee_type_id`,`department_id`,`designation_id`,`user_id`,`employee_name`, `appointment_date`, `date_of_birth`, `employee_code`, `email`, `joining_date`, `employee_status`, `religion`, `nationality`, `district`, `Countries`, `postal_code`, `Passport_or_NID`, `gender`, `maritial_Status`, `present_address`,`permanent_address`,`picture`,`created_by`,`phone`,`password`) VALUES ( '$EmptypeId', '$deptId','$designationId','NULL','$fullname', '$appointdate', '$DOB', '$Empcode', '$email', '$joindate', '$status', '$religion', '$nationality', '$distic', '$country', '$postCode', '$passNid', '$gender', '$marital_status', '$preaddress', '$peraddress', '$path','$Created_by','$phone','$Emppass')";
                                         $query = mysqli_query($conn, $sql);
                                         $alert['success'] =  "Employee Added.";
 										
@@ -271,10 +352,10 @@
                                     <input class="form-control" type="text" name="employ_religion" id="employ_religion" placeholder="Employee Religion" onkeyup="change(this.id,'erremploy_religion')" onblur="change(this.id,'erremploy_religion')" >
                                     <span id="erremploy_religion"></span><br>
 									
-                                    <input class="form-control" type="text" name="employ_district" id="employ_district"  placeholder="Employee District" onkeyup="change(this.id,'erremploy_district')" onblur="change(this.id,'erremploy_district')" >
+                                    <input class="form-control distc" type="text" name="employ_district" id="employ_district" autocomplete="off"  placeholder="Employee District" onkeyup="change(this.id,'erremploy_district')" onblur="change(this.id,'erremploy_district')" >
                                     <span id="erremploy_district"></span><br>
 									
-                                    <input class="form-control coun" type="text" name="employ_countris" id="employ_countris" placeholder="Employee Countris" onkeyup="change(this.id,'erremploy_countris')" onblur="change(this.id,'erremploy_countris')" >
+                                    <input class="form-control coun" type="text" name="employ_countris" id="employ_countris" autocomplete="off" placeholder="Employee Countris" onkeyup="change(this.id,'erremploy_countris')" onblur="change(this.id,'erremploy_countris')" >
                                     <span id="erremploy_countris"></span><br>
 									
                                     <input class="form-control" type="text" name="phone" id="phone" placeholder="Employee Phone" onkeyup="change(this.id,'errphone','mobile')" onblur="change(this.id,'errphone','mobile')" >
@@ -283,7 +364,7 @@
                                     <input class="form-control" type="text" name="employ_postal_code" id="employ_postal_code" placeholder="Employee Postal Code" onkeyup="change(this.id,'erremploy_postal_code')" onblur="change(this.id,'erremploy_postal_code')" >
                                     <span id="erremploy_postal_code"></span><br>
 									
-                                    <input class="form-control coun" type="text" name="employ_nationality" id="employ_nationality" placeholder="Employee Nationality" onkeyup="change(this.id,'erremploy_nationality')" onblur="change(this.id,'erremploy_nationality')" >
+                                    <input class="form-control coun" type="text" name="employ_nationality" id="employ_nationality" autocomplete="off" placeholder="Employee Nationality" onkeyup="change(this.id,'erremploy_nationality')" onblur="change(this.id,'erremploy_nationality')" >
                                     <span id="erremploy_nationality"></span><br>
 									
                                     <textarea class="form-control" name="present_address" id="present_address" placeholder="Present Address" cols="" rows="" onkeyup="change(this.id,'errpresent_address')" onblur="change(this.id,'errpresent_address')" ></textarea>
@@ -343,6 +424,7 @@
 											<?php 
 											
 												for($i=1;$i<=$rowcount;$i++){
+													
 													$row=mysqli_fetch_array($query);
 													
 											?>
@@ -364,6 +446,7 @@
 											<?php 
 											
 												for($i=1;$i<=$rowcount;$i++){
+													
 													$row=mysqli_fetch_array($query);
 													
 											?>
@@ -385,6 +468,7 @@
                                         <?php 
 										
 											for($i=1;$i<=$rowcount;$i++){
+												
 												$row=mysqli_fetch_array($query);
 												
 										?>
@@ -450,6 +534,7 @@
 				
 
 			</script>
+			
 			<script type="text/JavaScript">
 			
 				$("#myform").submit(function(){
@@ -888,14 +973,12 @@
 			<script>
 
 				$(document).ready(function(){
-					$('#distc').autocomplete({
-						source:'get_distric.php',
+					$('.distc').autocomplete({
+						source:'getDistrict.php',
 						minLength:1,
 						delay:500
-					})
-				})
-				
-				
+					});
+				});
 				
 			</script> 
 			
@@ -906,12 +989,66 @@
 						source:'getCountry.php',
 						minLength:1,
 						delay:500
-					})
-				})
-			
-			
+					});
+				});
 			
 			</script> 
 
 
-<?php include("Footer.php");?>    
+		</main>
+        <!--end page main-->
+
+        <!--start overlay-->
+        <div class="overlay nav-toggle-icon"></div>
+        <!--end overlay-->
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+        <!--End Back To Top Button-->
+
+    </div>
+    <!--end wrapper-->
+	
+
+    <!-- Bootstrap bundle JS -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="assets/plugins/easyPieChart/jquery.easypiechart.js"></script>
+    <script src="assets/plugins/peity/jquery.peity.min.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="assets/js/pace.min.js"></script>
+    <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <!--app-->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/index.js"></script>
+
+    <script>
+	
+        new PerfectScrollbar(".best-product")
+        new PerfectScrollbar(".top-sellers-list")
+
+    </script>
+	
+
+</body>
+
+</html>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: #ffffff">
+	Copyright@2022 --||-- Mother's Dreams Creative IT --||-- All Rights Reserved
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->    

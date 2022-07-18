@@ -175,7 +175,7 @@
 				</li>
 			</ul>
 			</li>
-
+			<!--
 			<li>
 				<a class="has-arrow" href="javascript:;">
 					<div class="parent-icon"><i class="bi bi-lock"></i></div>
@@ -195,6 +195,7 @@
 					</li>
 				</ul>
 			</li>
+			-->
 			
 			<li>
 				<a class="has-arrow" href="javascript:;">

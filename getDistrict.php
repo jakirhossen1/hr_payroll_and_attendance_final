@@ -11,5 +11,5 @@
 		$data[]=$row['name'];    
 	}
 	echo json_encode($data);
-
+	
 ?>

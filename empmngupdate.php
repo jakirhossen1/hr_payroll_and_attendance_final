@@ -21,7 +21,7 @@
 					
 					<div class="row">
 						<!-- personal information Start -->
-						<div class="col-md-6">
+						<div class="col-md-5">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title text-info">Personal information</h4>
@@ -75,13 +75,14 @@
 										<option value="Active">Active</option>
 										<option value="Inactive">Inactive</option>
 									</select>
+									
 								</div>
 							</div>
 						</div>
 						<!-- personal information End -->
 
 
-						<div class="col-md-6">
+						<div class="col-md-5">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title text-info">Company Details</h4>
@@ -94,18 +95,18 @@
 									<input class="form-control mt-3" name="designation_id" id="designation_id" value="<?php echo $num['designation_id'];?>"   > <br>
 
 
-									<label for="">Appointment Date:</label>
+									<!-- <label for="">Appointment Date:</label>
 									<input class="form-control datepickers" type="date" name="appointment_date" id="appointment_date" autocomplete="off" value="<?php echo $num['appointment_date'];?>"   ><br>
 
 									<label for="">Joining Date: </label>
-									<input class="form-control datepickers" type="date" name="joining_date" id="joining_date" autocomplete="off" value="<?php echo $num['joining_date'];?>"   ><br>
+									<input class="form-control datepickers" type="date" name="joining_date" id="joining_date" autocomplete="off" value="<?php echo $num['joining_date'];?>"   ><br> -->
 
 									<input class="form-control" type="hidden" name="employee_id" id="employee_id" value="<?php echo $num['employee_id'];?>"   >
 
 									<label>Employee Id:</label>
 									<input class="form-control" type="text" name="employee_code" id="employee_code" value="<?php echo $num['employee_code'];?>"    readonly><br>
+									
 									<label>Created By:</label>
-
 									<input class="form-control" type="text" name="created_by" id="created_by" value="<?php echo $num['created_by'];?>"   readonly ><br>
 								</div>
 								<div class="modal-footer">
@@ -114,8 +115,24 @@
 							</div>
 						<!-- Company information End -->
 						</div>
-					</div>
+						<?php
 
+							$id=$_GET['aid'];
+							$sqls="SELECT * FROM user_table WHERE user_id ='$id';";
+							$querys= mysqli_query($conn,$sqls);
+							$nums= mysqli_fetch_array($querys)
+
+						?>
+						<div class="col-md-2">
+							<div class="modal-content">
+								<div class="modal-body">
+									<input type="hidden" name="id" value="<?php echo $nums['user_id'];?>" >
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
 				</form>
 			</div>
 			
