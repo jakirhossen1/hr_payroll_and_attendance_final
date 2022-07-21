@@ -38,6 +38,8 @@
 							
                             <div class="col-md-2" id="hiddenDiv">
                                 <select class="form-select" name="statusp" id="">
+									<option value="selected"> Select your status </option>
+									<option value="AllStatus"> All </option>
                                     <option value="Present">Present</option>
                                     <option value="Absent">Absent</option>
                                     <option value="On Leave">Leave</option>
@@ -109,8 +111,7 @@
 
                                 <?php
 								
-									}
-									else{
+									}else{
 										echo '<caption><center><h3> Individual Attendance Report</h3></center></caption>';
 										echo "<hr>";
 										echo '<table class="table table-bordered"><tr>
@@ -144,7 +145,7 @@
 
 									$qurrs = mysqli_query($conn, $sqlls);
 									$rows = mysqli_fetch_array($qurrs);
-											$sqllss = "Select `employee_id`, COUNT(attendaneStatus)as Abst from attendance WHERE employee_id='$emp' && attendaneStatus='Absent' && attendancedate Between '$start' AND  '$end'";
+									$sqllss = "Select `employee_id`, COUNT(attendaneStatus)as Abst from attendance WHERE employee_id='$emp' && attendaneStatus='Absent' && attendancedate Between '$start' AND  '$end'";
 
 									$qurrss = mysqli_query($conn, $sqllss);
 									$rowss = mysqli_fetch_array($qurrss);
