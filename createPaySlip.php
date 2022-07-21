@@ -1,5 +1,7 @@
 <?php 
 	
+	include('connect.php');
+	
 	if(isset($_POST['submit'])){
 		
 		@$empName=$_POST['empnam'];
