@@ -181,8 +181,8 @@
                             $EmptypeId=$_POST['employment_id'];
                             $deptId=$_POST['department_id'];
                             $designationId=$_POST['designation'];
-                            $appointdate=$_POST['appointment_date'];
-                            $joindate=$_POST['joining_date'];
+                            $appointment_date=$_POST['appointment_date'];
+                            $joining_date=$_POST['joining_date'];
                             $Empcode=$_POST['employee_code'];
                             $Created_by=$_POST['created_by'];
                             //$Empstatus=$_POST['employement_status'];
@@ -215,7 +215,7 @@
 										
                                     } else{
 										
-                                        $sql = "INSERT INTO `employee` (`employee_type_id`,`department_id`,`designation_id`,`user_id`,`employee_name`, `appointment_date`, `date_of_birth`, `employee_code`, `email`, `joining_date`, `employee_status`, `religion`, `nationality`, `district`, `Countries`, `postal_code`, `Passport_or_NID`, `gender`, `maritial_Status`, `present_address`,`permanent_address`,`picture`,`created_by`,`phone`,`password`) VALUES ( '$EmptypeId', '$deptId','$designationId','NULL','$fullname', '$appointdate', '$DOB', '$Empcode', '$email', '$joindate', '$status', '$religion', '$nationality', '$distic', '$country', '$postCode', '$passNid', '$gender', '$marital_status', '$preaddress', '$peraddress', '$path','$Created_by','$phone','$Emppass')";
+                                        $sql = "INSERT INTO `employee` (`employee_type_id`,`department_id`,`designation_id`,`user_id`,`employee_name`, `appointment_date`, `date_of_birth`, `employee_code`, `email`, `joining_date`, `employee_status`, `religion`, `nationality`, `district`, `Countries`, `postal_code`, `Passport_or_NID`, `gender`, `maritial_Status`, `present_address`,`permanent_address`,`picture`,`created_by`,`phone`,`password`) VALUES ( '$EmptypeId', '$deptId','$designationId','NULL','$fullname', '$appointment_date', '$DOB', '$Empcode', '$email', '$joining_date', '$status', '$religion', '$nationality', '$distic', '$country', '$postCode', '$passNid', '$gender', '$marital_status', '$preaddress', '$peraddress', '$path','$Created_by','$phone','$Emppass')";
                                         $query = mysqli_query($conn, $sql);
                                         $alert['success'] =  "Employee Added.";
 										

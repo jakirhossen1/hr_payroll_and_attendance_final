@@ -1,8 +1,10 @@
 <?php
-
-	if(isset($_POST['submit'])){
+	
+	include("connect.php");
+	
+	if(isset($_POST["submit"])){
 		
-		$employeeType=$_POST['employeeType'];
+		$employeeType=$_POST["employeeType"];
 		
 		$s="SELECT * FROM employee_Type WHERE employee_Type='$employeeType'";
 		$qurey=mysqli_query($conn,$s);
@@ -50,7 +52,7 @@
 						
 						<div class="col-md-3">
 						
-							<input type="submit" name="submit" id="" class="btn btn-primary pull-right mt-3" value="Save">
+							<input type="submit" name="submit" id="submit" class="btn btn-primary pull-right mt-3" value="Save">
 							  
 						</div>
 					  </div>
