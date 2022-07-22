@@ -39,6 +39,7 @@
 							
                             <div class="col-md-2" id="hiddenDiv">
                                 <select class="form-select" name="statusp" id="">
+                                	<option value="selected">Select any option</option>
                                     <option value="All">All</option>
                                     <option value="basic_salary">Basic Salary</option>
                                     <option value="medical">Medical</option>
@@ -138,44 +139,48 @@
                             <?php echo "</table>";?>
                            
     
-							<?php
+								<?php
 								
-								if ($emp == 'AllEmp' && $status =='All' ){
-									
-									echo '<caption><center><h3> '.$emp. ' Salary Report</h3></center></caption>';
-									echo "<hr>";
-									echo '<table class="table table-bordered">
-										<tr>
-											<th>Name</th>
-											<th>Year</th>
-											<th>Month</th>
-											<th>Basic Salary</th>
-											<th>Medical</th>
-											<th>House</th>
-											<th>Food</th>
-											<th>Provident</th>
-											<th>Net Salary</th>
-										</tr>';
+									if ($emp == 'AllEmp' && $status =='All' ){
+										
+										echo '<caption><center><h3> '.$emp. ' Salary Report</h3></center></caption>';
+										echo "<hr>";
+								?>
+								<table class="table table-bordered">
+									<tr>
+										<th>Name</th>
+										<th>Year</th>
+										<th>Month</th>
+										<th>Basic Salary</th>
+										<th>Medical</th>
+										<th>House</th>
+										<th>Food</th>
+										<th>Provident</th>
+										<th>Net Salary</th>
+									</tr>
+
+								<?php
+
 									$sqll = "Select * from salary Where salary_year='$year' && salary_Month='$month'";
 									$qurr = mysqli_query($conn, $sqll);
 									
 									while ($row = mysqli_fetch_array($qurr)){
 
-							?>
-                            <tr>
-                                <td><?php echo $row['employe_id']; ?></td>
-                                <td><?php echo $row['salary_year']; ?></td>
-                                <td><?php echo $row['salary_Month']; ?></td>
-                                <td><?php echo $row['basic_salary']; ?></td>
-                                <td><?php echo $row['medical']; ?></td>
-                                <td><?php echo $row['house_rent']; ?></td>
-                                <td><?php echo $row['food']; ?></td>
-								<td><?php echo $row['provident_fund']; ?></td>
-								<td><?php echo $row['net_salary']; ?></td>
-                            </tr>
+								?>
+		                            <tr>
+		                                <td><?php echo $row['employe_id']; ?></td>
+		                                <td><?php echo $row['salary_year']; ?></td>
+		                                <td><?php echo $row['salary_Month']; ?></td>
+		                                <td><?php echo $row['basic_salary']; ?></td>
+		                                <td><?php echo $row['medical']; ?></td>
+		                                <td><?php echo $row['house_rent']; ?></td>
+		                                <td><?php echo $row['food']; ?></td>
+										<td><?php echo $row['provident_fund']; ?></td>
+										<td><?php echo $row['net_salary']; ?></td>
+		                            </tr>
 
-                            <?php } ?>
-                            <?php echo "</table>";?>
+	                            <?php } ?>
+	                            <?php echo "</table>";?>
 
 
                             <?php
@@ -184,34 +189,49 @@
 								{
 									echo '<caption><center><h3> '.$emp. ' Salary Report</h3></center></caption>';
 									echo "<hr>";
-									echo '<table class="table table-bordered">
-										<tr>
-											<th>Name</th>
-											<th>Year</th>
-											<th>Month</th>
+							?>
+								<table class="table table-bordered">
+									<tr>
+										<th>Name</th>
+										<th>Year</th>
+										<th>Month</th>
+										<?php if($status == 'All'):?>
 											<th>Basic Salary</th>
 											<th>Medical</th>
 											<th>House</th>
 											<th>Food</th>
 											<th>Provident</th>
 											<th>Net Salary</th>
-										</tr>';
-									$sqll = "Select * from salary Where employe_id='$emp' && salary_year='$year' && salary_Month='$month'";
-									$qurr = mysqli_query($conn, $sqll);
-									while ($row = mysqli_fetch_array($qurr)){
+										<?php else: ?>
+											<th><?=$status;?></th>
+										<?php endif;?>
+										
+									</tr>
+							<?php 
+
+								$sqll = "Select * from salary Where employe_id='$emp' && salary_year='$year' && salary_Month='$month'";
+								$qurr = mysqli_query($conn, $sqll);
+
+								$sq="Select * from salary Where employe_id='$emp' && salary_year='$year' && salary_Month='$month'";
+
+								while ($row = mysqli_fetch_array($qurr)){
 
 							?>
-                            <tr>
-                               <td><?php echo $row['employe_id']; ?></td>
-                                <td><?php echo $row['salary_year']; ?></td>
-                                <td><?php echo $row['salary_Month']; ?></td>
-                                <td><?php echo $row['basic_salary']; ?></td>
-                                <td><?php echo $row['medical']; ?></td>
-                                <td><?php echo $row['house_rent']; ?></td>
-                                <td><?php echo $row['food']; ?></td>
-								<td><?php echo $row['provident_fund']; ?></td>
-								<td><?php echo $row['net_salary']; ?></td>
-                            </tr>
+		                            <tr>
+		                               <td><?php echo $row['employe_id']; ?></td>
+		                                <td><?php echo $row['salary_year']; ?></td>
+		                                <td><?php echo $row['salary_Month']; ?></td>
+		                                <?php if($status == 'All'):?>
+	                                    	<td><?php echo $row['basic_salary']; ?></td>
+			                                <td><?php echo $row['medical']; ?></td>
+			                                <td><?php echo $row['house_rent']; ?></td>
+			                                <td><?php echo $row['food']; ?></td>
+											<td><?php echo $row['provident_fund']; ?></td>
+											<td><?php echo $row['net_salary']; ?></td>
+	                                	<?php else: ?>
+											<td><?=$row[$status]; ?></td>
+										<?php endif;?>
+			                        </tr>
 
                             <?php } ?>
                             <?php echo "</table>";?>

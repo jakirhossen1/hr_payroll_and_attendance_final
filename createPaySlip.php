@@ -715,6 +715,8 @@
 						$payrollInsertQuery=mysqli_query($conn,$payrollInsert);
 						
 						echo "<script>alert('Create Payroll Slip Successfully ')</script>";
+
+						header("location:payslipmanage.php");
 						
 					}
 					

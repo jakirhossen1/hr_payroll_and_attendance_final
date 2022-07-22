@@ -87,90 +87,118 @@
 										
 										if ($emp == 'AllEmp'){
 											
-											echo '<caption><center><h3>Attendance Report</h3></center></caption>';
+											echo '<caption><center><h3>All Employee Attendance Report</h3></center></caption>';
 											echo "<hr>";
-											echo '<table class="table table-bordered"><tr><th>Name</th><th>Date</th><th>Days</th><th>'.$status.'</th></tr>';
-											$sqlls = "Select `employee_id`,
-									COUNT(attendaneStatus)as Absent
-									from attendance WHERE attendaneStatus='$status' && attendancedate Between '$start' AND  '$end' GROUP BY employee_id";
+											?>
+											<table class="table table-bordered">
+												<tr>
+													<th>Name</th>
+													<th>Date</th>
+													<th>Days</th>
+													<?php if($status == 'AllStatus'):?>
+														<th>Present</th>
+														<th>Absent</th>
+														<th>Leave</th>
+													<?php else: ?>
+														<th><?=$status;?></th>
+													<?php endif;?>
+												</tr>
+											<?php
+											if($status == 'AllStatus') {
+												$sqlls = "Select `employee_id`,
+												(select count(ca.attendaneStatus) from attendance as ca where ca.attendaneStatus = 'Present' and ca.attendancedate Between '$start' AND  '$end' and ma.employee_id = ca.employee_id) as Present,
+												(select count(ca.attendaneStatus) from attendance as ca where ca.attendaneStatus = 'Absent' and ca.attendancedate Between '$start' AND  '$end' and ma.employee_id = ca.employee_id) as Absent,
+												(select count(ca.attendaneStatus) from attendance as ca where ca.attendaneStatus = 'On Leave' and ca.attendancedate Between '$start' AND  '$end' and ma.employee_id = ca.employee_id) as `Leave`
+												from attendance as ma WHERE attendancedate Between '$start' AND  '$end' GROUP BY employee_id";
+											} else {
+												$sqlls = "Select `employee_id`,COUNT(attendaneStatus)as Absent from attendance WHERE attendaneStatus='$status' && attendancedate Between '$start' AND  '$end' GROUP BY employee_id";
+											}
 
 											$qurrs = mysqli_query($conn, $sqlls);
 											while($rows = mysqli_fetch_array($qurrs)){ 
 											
 
-								?>
-								<tr>
-									<td><?php echo $rows['employee_id']; ?></td>
-                                    <td><?php echo $start . " " . "<strong>To</strong>" . " " . $end; ?></td>
-                                    <td><?php echo $days->format("%a"); ?></td>
-                                    <td><?php echo $rows['Absent']; ?></td>
-								</tr>
-                                <?php }?>
+									?>
+									<tr>
+										<td><?php echo $rows['employee_id']; ?></td>
+	                                    <td><?php echo $start . " " . "<strong>To</strong>" . " " . $end; ?></td>
+	                                    <td><?php echo $days->format("%a"); ?></td>
+	                                    <?php if($status == 'AllStatus'):?>
+	                                    	<td><?php echo $rows['Present']; ?></td>
+	                                    	<td><?php echo $rows['Absent']; ?></td>
+	                                    	<td><?php echo $rows['Leave']; ?></td>
+	                                	<?php else: ?>
+											<td><?php echo $rows['Absent']; ?></td>
+										<?php endif;?>
+									</tr>
+										<?php
+										}  ?>
 								<?php echo " </table>"?>
-
-
+									
+											
                                 <?php
 								
 									}else{
-										echo '<caption><center><h3> Individual Attendance Report</h3></center></caption>';
+										echo '<caption><center><h3> '.$emp.' Attendance Report</h3></center></caption>';
 										echo "<hr>";
-										echo '<table class="table table-bordered"><tr>
-																	<th>Name</th>
-																	<th>Date</th>
-																	<th>SignIn Time</th>
-																	<th>SignOut Time</th>
-																	<th>Status</th>
-																</tr>';
+										?>
+										<table class="table table-bordered">
+											<tr>
+												<th>Name</th>
+												<th>Date</th>
+												<?php if($status == 'AllStatus'):?>
+													<th>Present</th>
+													<th>Absent</th>
+													<th>Leave</th>
+												<?php else: ?>
+													<th><?=$status;?></th>
+												<?php endif;?>
+											</tr>
+											<?php
 										$sqll = "Select * from attendance Where employee_id='$emp' && attendancedate Between '$start' AND '$end'";
 										$qurr = mysqli_query($conn, $sqll);
+										$row = mysqli_fetch_array($qurr);
 										
-										while ($row = mysqli_fetch_array($qurr)){
+										$sqlls = "Select `employee_id`,COUNT(attendaneStatus)as Present from attendance WHERE employee_id='$emp' && attendaneStatus='Present' && attendancedate Between '$start' AND  '$end'";
+										$qurrs = mysqli_query($conn, $sqlls);
+										$rows = mysqli_fetch_array($qurrs);
+										
+										$sqllss = "Select `employee_id`, COUNT(attendaneStatus)as Abst from attendance WHERE employee_id='$emp' && attendaneStatus='Absent' && attendancedate Between '$start' AND  '$end'";
+										$qurrss = mysqli_query($conn, $sqllss);
+										$rowss = mysqli_fetch_array($qurrss);
+										
+										$sqllsss = "Select `employee_id`, COUNT(attendaneStatus)as lev from attendance WHERE employee_id='$emp' && attendaneStatus='On Leave' && attendancedate Between '$start' AND '$end'";
+										$qurrsss = mysqli_query($conn, $sqllsss);
+										$rowsss = mysqli_fetch_array($qurrsss);
 											
 
 								?>
                                 <tr>
-                                    <td><?php echo $row['employee_id']; ?></td>
-                                    <td><?php echo $row['attendancedate']; ?></td>
-                                    <td><?php $sign=date_create($row['singInTime']);echo date_format($sign, 'g:i A') ; ?></td>
-                                    <td><?php  $singOut=date_create($row['singOutTime']);echo date_format($singOut , 'g:i A') ; ?></td>
-                                    <td><?php echo $row['attendaneStatus']; ?></td>
+                                    <td><?php echo $rows['employee_id']; ?></td>
+                                    <td><?php echo $start . " " . "<strong>To</strong>" . " " . $end; ?></td>
+                                    <?php if($status == 'AllStatus'):?>
+	                                    <td><?php echo $rows['Present']; ?></td>
+										<td><?php echo $rowss['Abst']; ?></td>
+										<td><?php echo $rowsss['lev']; ?></td>
+									<?php else: ?>
+										<td><?php
+											if ($status == 'Present') {
+												echo $rows['Present'];
+											} elseif ($status == 'Absent') {
+												echo $rowss['Abst'];
+											} elseif ($status == 'On Leave') {
+												echo $rowsss['lev'];
+											}
+										?></td>
+									<?php endif ?>
                                 </tr>
                            
                                 <?php } ?>
 								<?php echo "</table>";?>
-								<?php 
 								
-									echo '<table class="table table-bordered"><tr><th>Date</th><th>Days</th><th>Present</th><th>Absent</th><th>Leave</th></tr>';
-									$sqlls = "Select `employee_id`,COUNT(attendaneStatus)as Present from attendance WHERE employee_id='$emp' && attendaneStatus='Present' && attendancedate Between '$start' AND  '$end'";
-
-									$qurrs = mysqli_query($conn, $sqlls);
-									$rows = mysqli_fetch_array($qurrs);
-									$sqllss = "Select `employee_id`, COUNT(attendaneStatus)as Abst from attendance WHERE employee_id='$emp' && attendaneStatus='Absent' && attendancedate Between '$start' AND  '$end'";
-
-									$qurrss = mysqli_query($conn, $sqllss);
-									$rowss = mysqli_fetch_array($qurrss);
-									$sqllsss = "Select `employee_id`, COUNT(attendaneStatus)as lev from attendance WHERE employee_id='$emp' && attendaneStatus='On Leave' && attendancedate Between '$start' AND '$end'";
-
-									$qurrsss = mysqli_query($conn, $sqllsss);
-									$rowsss = mysqli_fetch_array($qurrsss);
-
-								?>
-								<tr>
-                                    <td><?php echo $start . " " . "<strong>To</strong>" . " " . $end; ?></td>
-                                    <td><?php echo $days->format("%a"); ?></td>
-                                    <td><?php echo $rows['Present']; ?></td>
-                                    <td><?php echo $rowss['Abst']; ?></td>
-                                    <td><?php echo $rowsss['lev']; ?></td>
-								</tr>
-								<?php echo  "</table>";?>
 				
         
-								<?php
-								
-									}
-								} 
-								
-								?>
+								<?php } ?>
                         </div>
                     </div>
                 </div>

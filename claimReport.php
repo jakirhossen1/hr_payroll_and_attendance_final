@@ -39,9 +39,12 @@
 							
                             <div class="col-md-2" id="hiddenDiv">
                                 <select class="form-select" name="statusp" id="">
+                                	<option value="Selected">Select any Status</option>
                                     <option value="All">All</option>
-                                    <option value="Unpaid">Unpaid</option>
                                     <option value="Paid">Paid</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="declined">Declined</option>
+
                                 </select>
                             </div>
 							
@@ -83,7 +86,7 @@
 									@$status=$_POST['statusp'];
 									$days = date_diff(date_create($start) , date_create($end));
 									
-									if($emp == 'AllEmp' && $status =='Unpaid'||$emp == 'AllEmp' && $status =='Paid'){
+									if($emp == 'AllEmp' && $status =='Paid'||$emp == 'AllEmp' && $status =='Pending'||$emp == 'AllEmp' && $status=='declined'){
 										
 										echo '<caption><center><h3> '.$status. ' Claim Report</h3></center></caption>';
 										echo "<hr>";
