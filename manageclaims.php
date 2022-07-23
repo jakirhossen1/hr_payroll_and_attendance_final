@@ -38,7 +38,7 @@
 												<th>Date</th>
 												<th>Claims Type</th>
 												<th>Amount</th>
-												<th>Claims Document</th>
+												<!--<th>Claims Document</th>-->
 												<th>Claims Status</th>
 												<th>Action</th>
 											</tr>
@@ -57,7 +57,7 @@
 												<td><?php echo $row['claims_date'] ?></td>
 												<td> <?php echo $row['type_of_expense'] ?></td>
 												<td> <?php echo $row['total_amount'] ?></td>
-												<td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td>
+												<!-- <td><img src="<?php //echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td> -->
 												<td>
 													<?php
 														$status = "<span class=' btn-primary'> Pending </span>";
@@ -111,7 +111,7 @@
 												<th>Date</th>
 												<th>Claims Type</th>
 												<th>Amount</th>
-												<th>Claims Document</th>
+												<!-- <th>Claims Document</th> -->
 												<th>Claims Status</th>
 												<th>Action</th>
 											</tr>
@@ -132,7 +132,7 @@
 												<td><?php echo $row['claims_date'] ?></td>
 												<td> <?php echo $row['type_of_expense'] ?></td>
 												<td> <?php echo $row['total_amount'] ?></td>
-												<td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td>
+												<!-- <td><img src="<?php //echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td> -->
 												<td>
 													<?php
 													
@@ -189,7 +189,7 @@
 												<th>Date</th>
 												<th>Claims Type</th>
 												<th>Amount</th>
-												<th>Claims Document</th>
+												<!-- <th>Claims Document</th> -->
 												<th>Claims Status</th>
 												<th>Action</th>
 											</tr>
@@ -210,7 +210,7 @@
 												<td><?php echo $row['claims_date'] ?></td>
 												<td> <?php echo $row['type_of_expense'] ?></td>
 												<td> <?php echo $row['total_amount'] ?></td>
-												<td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td>
+												<!-- <td><img src="<?php echo $row['documents'];?>"  width="50" height="50" alt="Image is not found!"> </td> -->
 												<td>
 												<?php
 												

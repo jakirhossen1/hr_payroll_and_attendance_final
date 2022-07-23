@@ -1,7 +1,7 @@
 <?php include("Topbar.php");?>
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
-                <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2)  : ?>
+                <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2||$_SESSION['role_id'] == 3)  : ?>
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
