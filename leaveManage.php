@@ -1,10 +1,9 @@
 <?php include("Topbar.php");?>
-
+			
 			<div class="modal-content">
 				<div class="forms-body">
 					<div class="row">
 						<div class="col-md-12">
-							
 							<h3 style="margin:10px;">Manage Leave</h3>
 							
 						</div>
@@ -50,14 +49,20 @@
 												<th>Leave Status</th>
 												<th>Comment</th>
 												<th>Support Document</th>
+												<?php if ($_SESSION['user']['role_id'] != 4):?>
 												<th>Action</th>
+												<?php endif;?>
 											</tr>
 											<?php
 											
 												include("connect.php");
 												
 												$n=1;
-												$sql=" SELECT * FROM leaves where leave_status = 'pending' ";
+												if ($_SESSION['user']['role_id'] == 4) {
+													$sql=" SELECT * FROM leaves where employee_id = '".$_SESSION['user']['full_name']."' and leave_status = 'pending' ";
+												} else {
+													$sql=" SELECT * FROM leaves where leave_status = 'pending' ";
+												}
 												$querry= mysqli_query($conn, $sql);
 												
 												while ($row= mysqli_fetch_array($querry)){
@@ -87,6 +92,7 @@
 												</td>
 												<td><?php echo $row['leave_for'] ?></td>
 												<td><?php echo $row['supported_document'] ?></td>
+												<?php if ($_SESSION['user']['role_id'] != 4):?>
 												<td>
 												<?php if($_SESSION['role']['role_name'] == "Admin"): ?>
 												<a class="btn btn-danger" href="leavemanagedelete.php?aid=<?php echo $row[0];?>">Delete</a>
@@ -94,6 +100,7 @@
 
 												<?php endif ?>
 												</td>
+												<?php endif ?>
 											</tr>
 											
 											<?php }
@@ -124,14 +131,20 @@
 												<th>Leave Status</th>
 												<th>Comment</th>
 												<th>Support Document</th>
+												<?php if ($_SESSION['user']['role_id'] != 4):?>
 												<th>Action</th>
+												<?php endif;?>
 											</tr>
 											<?php
 											
 												include("connect.php");
 												
 												$n=1;
-												$sql =" SELECT * FROM leaves where leave_status = 'aproved' ";
+												if ($_SESSION['user']['role_id'] == 4) {
+													$sql =" SELECT * FROM leaves where employee_id = '".$_SESSION['user']['full_name']."' and leave_status = 'aproved' ";
+												} else {
+													$sql =" SELECT * FROM leaves where leave_status = 'aproved' ";
+												}
 												$querry= mysqli_query($conn, $sql);
 												
 												while ($row= mysqli_fetch_array($querry)){
@@ -165,6 +178,7 @@
 												</td>
 												<td><?php echo $row['leave_for'] ?></td>
 												<td><?php echo $row['supported_document'] ?></td>
+												<?php if ($_SESSION['user']['role_id'] != 4):?>
 												<td>
 													<?php 
 													
@@ -180,6 +194,7 @@
 
 													<?php endif ?>
 												</td>
+													<?php endif ?>
 											</tr>
 											<?php }
 											
@@ -209,14 +224,20 @@
 												<th>Leave Status</th>
 												<th>Comment</th>
 												<th>Support Document</th>
+												<?php if ($_SESSION['user']['role_id'] != 4):?>
 												<th>Action</th>
+												<?php endif;?>
 											</tr>
 											<?php
 											
 												include("connect.php");
 												
 												$n=1;
-												$sql =" SELECT * FROM leaves where leave_status = 'declined' ";
+												if ($_SESSION['user']['role_id'] == 4) {
+													$sql =" SELECT * FROM leaves where employee_id = '".$_SESSION['user']['full_name']."' and leave_status = 'declined' ";
+												} else {
+													$sql =" SELECT * FROM leaves where leave_status = 'declined' ";
+												}
 												$querry= mysqli_query($conn, $sql);
 												
 												while ($row= mysqli_fetch_array($querry)){
@@ -250,6 +271,7 @@
 											</td>
 											<td><?php echo $row['leave_for'] ?></td>
 											<td><?php echo $row['supported_document'] ?></td>
+											<?php if ($_SESSION['user']['role_id'] != 4):?>
 											<td>
 												<?php 
 												
@@ -265,6 +287,7 @@
 
 												<?php endif ?>
 											</td>
+												<?php endif ?>
 											</tr>
 											<?php }
 											

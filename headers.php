@@ -141,7 +141,7 @@
 		<?php 
 		
 			if(isset($_POST['clockind_submit'])){
-				$nam = $_SESSION['user_id'];
+				$nam = $_SESSION['full_name'];
 				$today = date("Y-m-d");
 				$In= date("Y-m-d H:i:s");
 				$Out= date("Y-m-d H:i:s");
@@ -159,7 +159,7 @@
 				  
 				}else{
 					
-				  $sql="INSERT INTO `attendance` (`employee_id`, `singInTime`, `lateCountTime`, `attendaneStatus`, `attendancedate`) VALUES ('$nam', '$In' , null ,null, '$today')";
+				  $sql="INSERT INTO `attendance` (`employee_id`, `singInTime`, `lateCountTime`, `attendaneStatus`, `attendancedate`) VALUES ('$nam', '$In' , null ,'Present', '$today')";
 				  $q=mysqli_query($conn,$sql);
 				  
 				  header("location:dailyAttendance.php");

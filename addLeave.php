@@ -4,7 +4,7 @@
   // print_r($_SESSION);die();
   
 ?>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 <?php include("Topbar.php");?>
 
@@ -137,7 +137,7 @@
 								<div class="form-group">
 								
 									Leave Start Date
-									<input class="form-control mt-1 mb-1 " name="leave_start_date" id="leave_start_date" type="date" onkeyup="change(this.id,'errleave_start_date')" onblur="change(this.id,'errleave_start_date')" >
+									<input class="form-control mt-1 mb-1 date-picker" name="leave_start_date" id="leave_start_date" type="text" />
 									<span id="errleave_start_date"></span>
 									
 								</div>
@@ -203,9 +203,16 @@
 			</div>
 
 
-		
-  
+			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script type="text/JavaScript">
+
+				$('.date-picker').datepicker({
+	                    minDate: "+3d",
+	                    dateFormat: 'dd/mm/yy', //you can change date format to any
+	                    autoclose: true,
+	 					todayHighlight: true,
+	                });
 			
 				$("#myform").submit(function(){
 					
