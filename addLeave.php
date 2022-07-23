@@ -20,7 +20,7 @@
 					$leave_ends_date = $_POST['leave_ends_date'];
 					$description = $_POST['description'];
 					$support_document = $_POST['support_document'];
-					$leave_status = "pending";
+					$leave_status = "Pending";
 
 					$sql = "INSERT INTO leaves ( leave_type_id,employee_id,leave_start_date, leave_end_date, leave_for, supported_document, leave_status) VALUES ('$leave_type','$select_employee','$leave_start_date', '$leave_ends_date', '$description', '$support_document', '$leave_status')";
 					$query = mysqli_query($conn, $sql);
@@ -80,28 +80,34 @@
 							<div class="col-md-3"></div>
 							<div class="col-md-6">
 								<?php if($_SESSION['role']['role_name'] == "Admin"): ?>
-								<div class="form-group">
-									<label>Users</label>
-									<?php
-									
-										$sql = "SELECT * FROM user_table WHERE `email` != '".$_SESSION['userName']."'";
-										$query = mysqli_query($conn, $sql);
-										$rowcount = mysqli_num_rows($query);
+									<div class="form-group">
+										<label>Users</label>
+										<?php
 										
-									?>
-									<select class="form-select" name="select_employee" id="select_employee" onkeyup="change(this.id,'errleave_type')" onblur="change(this.id,'errleave_type')" >
-									<option value="">Select user</option>
-									<?php
-									
-										for ($i = 1; $i <= $rowcount; $i++){
+											$sql = "SELECT * FROM user_table WHERE `email` != '".$_SESSION['userName']."'";
+											$query = mysqli_query($conn, $sql);
+											$rowcount = mysqli_num_rows($query);
 											
-											$row = mysqli_fetch_array($query);
+										?>
+										<select class="form-select" name="select_employee" id="select_employee" onkeyup="change(this.id,'errleave_type')" onblur="change(this.id,'errleave_type')" >
+										<option value="">Select user</option>
+										<?php
 										
-									?>
-									<option value="<?php echo $row['user_name']; ?>"><?php echo $row['user_name'] ." (". $row['email'] .")"; ?></option>
-									<?php } ?>
-									</select>
-								</div>
+											for ($i = 1; $i <= $rowcount; $i++){
+												
+												$row = mysqli_fetch_array($query);
+											
+										?>
+										<option value="<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></option>
+										<?php } ?>
+										</select>
+									</div>
+								<?php else:?>
+									<div class="form-group">
+										<label>Users</label>
+										
+										<input type="text" class="form-select" name="select_employee" id="select_employee" value="<?php echo $_SESSION['full_name'];?>" readonly>
+									</div>
 								<?php endif ?>
 
 								<div class="form-group">

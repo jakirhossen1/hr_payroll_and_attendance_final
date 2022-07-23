@@ -508,6 +508,10 @@
 					<li> 
 						<a href="addLeave.php"><i class="bi bi-arrow-right-short"></i>Apply Leave</a>
 					</li>
+
+					<li> 
+						<a href="leaveManage.php"><i class="bi bi-arrow-right-short"></i>Manage Leave</a>
+					</li>
 					
 					<li>
 						<a href="addLeaveType.php"><i class="bi bi-arrow-right-short"></i>Add Leave Type</a>
